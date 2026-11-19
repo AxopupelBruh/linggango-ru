@@ -41,7 +41,7 @@
   при 4 потоках и задержке — 20–40 минут чистого времени);
 * **я (MiniMax M3.1)** делаю то, что Google не умеет: глоссарий терминов, названия глав
   и квестов, починку строк, не прошедших валидацию, финальную вычитку;
-* результат сходится в один кэш `translations.json` → реиспользуется при повторных прогонах.
+* результат сходится в один кэш `cache.json` → реиспользуется при повторных прогонах.
 
 ---
 
@@ -58,9 +58,10 @@ LINGGANGO/
 └── linggango/workspace/          ← НОВЫЙ: весь инструментарий + бэкапы
     ├── lgq_crypt.py                расшифровка/шифрование LGQ1
     ├── extract_quests.py           сбор строк из квестов
-    ├── translate.py                конвейер перевода (Google + кэш + глоссарий)
+    ├── run.py                      перевод через бэкенд (DeepL/Google/DeepSeek) + кэш
+    ├── tr_engine.py                движок: бэкенды, глоссарий, проверка качества
     ├── glossary.json               словарь терминов EN→RU
-    ├── validate.py                 проверка плейсхолдеров и структуры
+    ├── verify.py                   проверка плейсхолдеров и структуры
     ├── build_resourcepack.py       сборка ресурспака
     └── apply_quests.py             расшифровка→перевод→перешифровка квестов
 ```
@@ -95,8 +96,9 @@ LINGGANGO/
 «Страж»; глоссарий оставит везде «Страж».
 
 ### Этап 2. Конвейер перевода (Google + я)
-* `translate.py`: батчинг по ~1 500 символов / до 40 строк, разделитель `\n` (проверено — не
-  разъезжается), `requests` + retry/backoff на 429, 4 потока, кэш в `translations.json`;
+* `run.py` + `tr_engine.py`: батчи до 50 строк (≈3 500 символов у Google, 15 000 у DeepL),
+  разделитель `\n` (проверено — не разъезжается), `requests` + retry/backoff на 429,
+  кэш в `cache.json`;
 * защита плейсхолдеров: `%s`, `%d`, `%.2f`, `%1$s`, `{0}`, `{}`, `§a`, `<tag>`, `item.id`,
   JSON-скобки — проверяются до/после, при несовпадении строка уходит в ручную очередь;
 * отсев мусора: значения-идентификаторы (`minecraft:stone`, команды, ключи конфигов) не
@@ -213,8 +215,8 @@ LINGGANGO/
 
 ```bash
 cd /home/ax/Documents/Opencode/Для сборок переводов/linggango/workspace
-./venv/bin/python extract_quests.py          # уже выполнено: 9 569 строк
-./venv/bin/python translate.py --demo 20     # прогон 20 строк, проверка качества
+python3 extract_quests.py                    # уже выполнено: 9 569 строк
+python3 run.py --source quests --limit 20 --demo   # прогон 20 строк, проверка качества
 ```
 
 ---
@@ -401,30 +403,30 @@ ZWNJ никогда не стоит в начале строки, перед н�
 
 ```bash
 cd /home/ax/Documents/Opencode/Для сборок переводов/linggango/workspace
-./venv/bin/python collect.py                       # собрать строки
-./venv/bin/python collect_extra.py                 # подсказки, меню, конфиги
-./venv/bin/python build_glossary.py                # обновить глоссарий
-./venv/bin/python run.py --source mods --backend google   # перевести
-./venv/bin/python repair_markup.py                 # восстановить разметку квестов
-./venv/bin/python manual_github_merge.py           # правки после сверки с чужим переводом
-./venv/bin/python normalize_terms.py               # выровнять терминологию по всей сборке
-./venv/bin/python audit_terms.py                   # найти оставшиеся расхождения терминов
-./venv/bin/python polish_ru.py                     # пунктуация + единообразие «ё»
-./venv/bin/python fix_zwnj.py                      # расстановка маркеров переноса ZWNJ
-./venv/bin/python apply_manual_round4.py           # точечные правки (экран смерти, названия)
-./venv/bin/python apply_quests.py                  # вшить перевод в квесты
-./venv/bin/python apply_extra.py                   # вшить перевод в конфиги
-./venv/bin/python apply_kubejs.py                  # вшить перевод в kubejs
-./venv/bin/python build_resourcepack.py            # собрать ресурспак
-./venv/bin/python verify.py                        # проверка
-./venv/bin/python verify_quests.py                 # проверка квестов
+python3 collect.py                       # собрать строки
+python3 collect_extra.py                 # подсказки, меню, конфиги
+python3 build_glossary.py                # обновить глоссарий
+python3 run.py --source mods --backend google   # перевести
+python3 repair_markup.py                 # восстановить разметку квестов
+python3 manual_github_merge.py           # правки после сверки с чужим переводом
+python3 normalize_terms.py               # выровнять терминологию по всей сборке
+python3 audit_terms.py                   # найти оставшиеся расхождения терминов
+python3 polish_ru.py                     # пунктуация + единообразие «ё»
+python3 fix_zwnj.py                      # расстановка маркеров переноса ZWNJ
+python3 apply_manual_round4.py           # точечные правки (экран смерти, названия)
+python3 apply_quests.py                  # вшить перевод в квесты
+python3 apply_extra.py                   # вшить перевод в конфиги
+python3 apply_kubejs.py                  # вшить перевод в kubejs
+python3 build_resourcepack.py            # собрать ресурспак
+python3 verify.py                        # проверка
+python3 verify_quests.py                 # проверка квестов
 ```
 
 Перед `apply_quests.py` оригиналы квестов надо восстановить (иначе перевод
 не применится поверх уже переведённого файла):
 
 ```bash
-./venv/bin/python - <<'PY'
+python3 - <<'PY'
 import shutil
 from pathlib import Path
 HERE = Path("/home/ax/Documents/Opencode/Для сборок переводов/linggango/workspace")
