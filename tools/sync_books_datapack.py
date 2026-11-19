@@ -8,9 +8,10 @@ from __future__ import annotations
 import shutil
 import zipfile
 from pathlib import Path
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent
+ROOT = INSTANCE
 DATAPACK = ROOT / "datapacks" / "zz_linggango_ru_books"
 JAR = ROOT / "mods" / "zz_linggango_ru_books.jar"
 SAVES = ROOT / "saves"

@@ -16,10 +16,11 @@ import zipfile
 from concurrent.futures import ProcessPoolExecutor
 from io import BytesIO
 from pathlib import Path
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 
 from PIL import Image
 
-ROOT = Path("/home/ax/Documents/curseforge/minecraft/Instances/Linggango")
+ROOT = INSTANCE
 OUT = Path("/home/ax/Pictures/a")
 WORD = re.compile(r"[A-Za-z]{3,}")
 KEYWORDS = ["sign", "gui", "tooltip", "info", "panel", "book", "quest", "label",

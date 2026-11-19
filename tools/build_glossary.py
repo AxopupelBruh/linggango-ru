@@ -7,15 +7,18 @@
 теми же словами, что и игра.
 """
 import json
+import os
 import re
 import zipfile
 from collections import Counter, defaultdict
 from pathlib import Path
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = INSTANCE
 MODS = ROOT / "mods"
-VANILLA_JAR = Path("/home/ax/Documents/curseforge/minecraft/Install/versions/1.20.1/1.20.1.jar")
-VANILLA_ASSETS = Path("/home/ax/Documents/curseforge/minecraft/Install/assets")
+MC_DIR = Path(os.environ.get("MC_DIR", "/home/ax/Documents/curseforge/minecraft"))
+VANILLA_JAR = Path(os.environ.get("VANILLA_JAR", MC_DIR / "Install/versions/1.20.1/1.20.1.jar"))
+VANILLA_ASSETS = Path(os.environ.get("VANILLA_ASSETS", MC_DIR / "Install/assets"))
 OUT = Path(__file__).parent / "glossary.json"
 
 

@@ -12,9 +12,10 @@ import shutil
 import sys
 from collections import defaultdict
 from pathlib import Path
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent
+ROOT = INSTANCE
 WORK = HERE / "work"
 BACKUP = HERE / "backup/config_extra"
 

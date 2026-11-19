@@ -22,9 +22,10 @@ import shutil
 import sys
 import zipfile
 from pathlib import Path
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent
+ROOT = INSTANCE
 MODS = ROOT / "mods"
 WORK = HERE / "work"
 BACKUP = HERE / "backup" / "jars_original"

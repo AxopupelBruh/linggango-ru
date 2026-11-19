@@ -16,15 +16,16 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 WORK = HERE / "work"
-KUBE = HERE.parent / "kubejs" / "client_scripts"
+KUBE = INSTANCE / "kubejs" / "client_scripts"
 
 HEADER = """// ===========================================================================
 // Русский перевод подсказок (тултипов) модов — модпак Linggango.
 //
-// СГЕНЕРИРОВАНО АВТОМАТИЧЕСКИ: .linggango-translate/build_tooltip_script.py
+// СГЕНЕРИРОВАНО АВТОМАТИЧЕСКИ: linggango/workspace/build_tooltip_script.py
 // Правь переводы в work/ui_strings_ru.json и work/pack_script_ru.json,
 // потом запусти build_tooltip_script.py заново.
 //

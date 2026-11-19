@@ -16,11 +16,12 @@ import subprocess
 import zipfile
 from collections import Counter
 from pathlib import Path
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 
 from PIL import Image
 
-ROOT = Path("/home/ax/Documents/curseforge/minecraft/Instances/Linggango")
-WORK = ROOT / ".linggango-translate" / "work"
+ROOT = INSTANCE
+WORK = WORK_DIR
 OUT = Path("/home/ax/Pictures/a")
 WORD = re.compile(r"[A-Za-z]{3,}")
 USED: set[str] = set()

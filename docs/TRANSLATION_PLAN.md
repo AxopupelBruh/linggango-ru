@@ -55,7 +55,7 @@ LINGGANGO/
 ├── kubejs/assets/<ns>/lang/ru_ru.json   ← НОВЫЕ
 ├── kubejs/client_scripts/lang.js  ← ИЗМЕНЯЕМ: добавить блок ru_ru
 ├── config/linggango-resourcepacks.toml  ← ИЗМЕНЯЕМ: наш пак последним = высший приоритет
-└── .linggango-translate/          ← НОВЫЙ: весь инструментарий + бэкапы
+└── linggango/workspace/          ← НОВЫЙ: весь инструментарий + бэкапы
     ├── lgq_crypt.py                расшифровка/шифрование LGQ1
     ├── extract_quests.py           сбор строк из квестов
     ├── translate.py                конвейер перевода (Google + кэш + глоссарий)
@@ -77,10 +77,10 @@ LINGGANGO/
 ## 3. Этапы работ
 
 ### Этап 0. Бэкап и страховка
-1. `tar czf .linggango-translate/backup/quests_backup.tgz config/ftbquests/quests`
+1. `tar czf linggango/workspace/backup/quests_backup.tgz config/ftbquests/quests`
 2. `tar czf .../kubejs_backup.tgz kubejs`
 3. `tar czf .../resourcepacks_backup.tgz resourcepacks`
-4. Отдельно сохранить **оригинальные** расшифрованные квесты в `.linggango-translate/plain/` —
+4. Отдельно сохранить **оригинальные** расшифрованные квесты в `linggango/workspace/plain/` —
    чтобы всегда можно было пересобрать зашифрованные из исходников.
 
 ### Этап 1. Словарь терминов (глоссарий) — делаю я
@@ -176,7 +176,7 @@ LINGGANGO/
 | Google rate-limit (429) | backoff, 4 потока, кэш; при отказе — пауза 10–60 с |
 | Ресурспак не подхватился | проверяется логом клиента; в `options.txt` пак указывается `file/...zip` |
 | Patchouli не берёт `ru_ru` из ресурспака | fallback: перепаковка 22 jar-ов с бэкапом |
-| Сборка обновилась и сбросила конфиги | всё лежит в `.linggango-translate/`, пересборка одной командой |
+| Сборка обновилась и сбросила конфиги | всё лежит в `linggango/workspace/`, пересборка одной командой |
 | Квесты не расшифровались после правки | `apply_quests.py` идемпотентен, можно перезапустить с нуля |
 
 ---
@@ -212,7 +212,7 @@ LINGGANGO/
 ## 8. Быстрый старт
 
 ```bash
-cd /home/ax/Documents/curseforge/minecraft/Instances/Linggango/.linggango-translate
+cd /home/ax/Documents/Opencode/Для сборок переводов/linggango/workspace
 ./venv/bin/python extract_quests.py          # уже выполнено: 9 569 строк
 ./venv/bin/python translate.py --demo 20     # прогон 20 строк, проверка качества
 ```
@@ -397,10 +397,10 @@ ZWNJ никогда не стоит в начале строки, перед н�
 
 ## Как это можно повторить
 
-Всё в `.linggango-translate/`:
+Всё в `linggango/workspace/`:
 
 ```bash
-cd .linggango-translate
+cd /home/ax/Documents/Opencode/Для сборок переводов/linggango/workspace
 ./venv/bin/python collect.py                       # собрать строки
 ./venv/bin/python collect_extra.py                 # подсказки, меню, конфиги
 ./venv/bin/python build_glossary.py                # обновить глоссарий
@@ -427,7 +427,7 @@ cd .linggango-translate
 ./venv/bin/python - <<'PY'
 import shutil
 from pathlib import Path
-HERE = Path("/home/ax/Documents/curseforge/minecraft/Instances/Linggango/.linggango-translate")
+HERE = Path("/home/ax/Documents/Opencode/Для сборок переводов/linggango/workspace")
 src = HERE / "backup/quests_original"; dst = HERE.parent / "config/ftbquests/quests"
 for f in src.rglob("*.snbt"):
     t = dst / f.relative_to(src); t.parent.mkdir(parents=True, exist_ok=True); shutil.copy2(f, t)
@@ -438,7 +438,7 @@ PY
 Ключи DeepL лежат в `.deepl_keys` (права 600). Кэш переводов — `cache_*.json`,
 поэтому повторные запуски не тратят лимит.
 
-**Бэкапы оригиналов:** `.linggango-translate/backup/` —
+**Бэкапы оригиналов:** `linggango/workspace/backup/` —
 `quests_backup.tgz`, `kubejs_backup.tgz`, `resourcepacks_backup.tgz`,
 `quests_original/` (расшифрованные оригиналы квестов),
 `config_extra/` (оригиналы конфигов меню и подсказок).

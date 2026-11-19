@@ -17,9 +17,10 @@ import sys
 import zipfile
 from collections import defaultdict
 from pathlib import Path
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent
+ROOT = INSTANCE
 MODS = ROOT / "mods"
 WORK = HERE / "work"
 

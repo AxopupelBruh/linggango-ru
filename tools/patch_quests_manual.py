@@ -7,9 +7,10 @@
 import re, sys, json
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 import lgq_crypt as C
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = INSTANCE
 QUESTS = ROOT / "config/ftbquests/quests"
 BACKUP = Path(__file__).resolve().parent / "backup/quests_original"
 

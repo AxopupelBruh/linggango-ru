@@ -12,9 +12,10 @@ from __future__ import annotations
 import json
 import zipfile
 from pathlib import Path
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent
+ROOT = INSTANCE
 WORK = HERE / "work"
 MODS = ROOT / "mods"
 JAR = ROOT / "mods" / "zz_linggango_ru_books.jar"

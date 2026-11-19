@@ -17,11 +17,12 @@ from collections import defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 from brands import restore_brands  # noqa: E402
 from lang_json import load_lang_json  # noqa: E402
 
 HERE = Path(__file__).parent
-ROOT = HERE.parent
+ROOT = INSTANCE
 MODS = ROOT / "mods"
 WORK = HERE / "work"
 PACK_NAME = "zz_linggango_ru"

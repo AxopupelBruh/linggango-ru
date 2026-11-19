@@ -4,9 +4,10 @@ import sys
 import zipfile
 import glob
 from pathlib import Path
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 
 HERE = Path(__file__).parent
-ROOT = HERE.parent
+ROOT = INSTANCE
 sys.path.insert(0, str(HERE))
 import lgq_crypt as C  # noqa: E402
 import snbt_text  # noqa: E402

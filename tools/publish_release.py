@@ -24,11 +24,16 @@ import subprocess
 import tempfile
 import sys
 from pathlib import Path
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent
+ROOT = INSTANCE
 STAGE = Path("/home/ax/Documents/Opencode/deepl/linggango-ru")
 REPO = "AxopupelBruh/linggango-ru"
+
+# документы по переводу лежат рядом с рабочим каталогом
+DOCS = HERE.parent / "docs"
+PROMPT_SRC = DOCS / "ПРОМТ_СИСТЕМНЫЙ_EN_RU.txt"
 
 # что копируем: (источник, назначение внутри релиза)
 FILES = [
@@ -36,14 +41,11 @@ FILES = [
     (ROOT / "kubejs/client_scripts/ru_tooltip_translator.js",
      "install/kubejs/client_scripts/ru_tooltip_translator.js"),
     (ROOT / "mods/zz_linggango_ru_books.jar", "install/mods/zz_linggango_ru_books.jar"),
-    (ROOT / "ГАЙД_ЛОКАЛИЗАЦИИ.md", "docs/LOCALIZATION_GUIDE.md"),
-    (ROOT / "LINGGANGO_TRANSLATION_PLAN.md", "docs/TRANSLATION_PLAN.md"),
+    (DOCS / "ГАЙД_ЛОКАЛИЗАЦИИ.md", "docs/LOCALIZATION_GUIDE.md"),
+    (DOCS / "LINGGANGO_TRANSLATION_PLAN.md", "docs/TRANSLATION_PLAN.md"),
     (HERE / "release/README.md", "README.md"),
     (HERE / "release/gitignore", ".gitignore"),
 ]
-
-# системный промт переводчика — лежит в общей папке гайдов
-PROMPT_SRC = Path("/home/ax/Documents/Opencode/Для сборок переводов/ПРОМТ_СИСТЕМНЫЙ_EN_RU.txt")
 
 DIRS = [
     (ROOT / "datapacks/zz_linggango_ru_books", "install/datapacks/zz_linggango_ru_books"),

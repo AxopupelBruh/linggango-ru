@@ -16,8 +16,14 @@
 Проект называется **Linggango** — это CurseForge-сборка (1.20.1, Forge) с 430 jar-файлами
 в `mods/`. Рабочая копия: `/home/ax/Documents/curseforge/minecraft/Instances/Linggango`.
 
-Каталог `.linggango-translate/` — это «мастерская»: скрипты сборки, словари, кэши переводов,
+Каталог `linggango/workspace/` — это «мастерская»: скрипты сборки, словари, кэши переводов,
 бэкапы. **Ничего из этого не попадает в игру** — в игру идут только артефакты ниже.
+
+> **Мастерская живёт вне инстанса** (19.11.2026): раньше она была папкой
+> `.linggango-translate/` внутри сборки и засоряла её. Теперь она здесь, а скрипты
+> узнают путь к инстансу через `paths.py`:
+> переменная окружения `LINGGANGO_INSTANCE` → файл `linggango/instance.path` →
+> значение по умолчанию. Проверить: `python3 workspace/paths.py`.
 
 | Артефакт | Назначение | Состояние |
 |---|---|---|
@@ -34,7 +40,7 @@
 Покрытие строк из Java-кода модов: **7 990 из 7 998** (DeepSeek — 7 950, DeepL — 21,
 без перевода 8 — HEX-коды и внутренние имена `GolemHeart DAB/KR/SAB/STB`).
 
-Проверка целостности: `python3 .linggango-translate/verify_all.py` → **ВСЁ ОК**.
+Проверка целостности: `python3 linggango/workspace/verify_all.py` → **ВСЁ ОК**.
 
 ---
 
@@ -249,7 +255,7 @@ JSON допускает комментарии — парсер `lang_json.py` �
 **Контроль покрытия** (что в игре нарисуется пустым квадратом):
 
 ```
-python3 .linggango-translate/audit_font_coverage.py
+python3 linggango/workspace/audit_font_coverage.py
 ```
 
 Непокрытые символы, которые остаются в итоговой сборке, идут из:
@@ -354,7 +360,7 @@ python3 .linggango-translate/audit_font_coverage.py
 ## 9. ШПАРГАЛКА КОМАНД
 
 ```bash
-cd "/home/ax/Documents/curseforge/minecraft/Instances/Linggango/.linggango-translate"
+cd "/home/ax/Documents/Opencode/Для сборок переводов/linggango/workspace"
 
 python3 build_resourcepack.py                    # собрать ресурспак
 python3 merge_ui_caches.py                       # слить кэши переводов UI

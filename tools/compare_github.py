@@ -19,9 +19,10 @@ HERE = Path(__file__).parent
 sys.path.insert(0, str(HERE))
 import ftbq_parse  # noqa: E402
 import lgq_crypt as C  # noqa: E402
+from paths import INSTANCE  # noqa: E402
 
 PLAIN = HERE / "plain/chapters"
-OURS = Path("/home/ax/Documents/curseforge/minecraft/Instances/Linggango/config/ftbquests/quests/chapters")
+OURS = INSTANCE / "config/ftbquests/quests/chapters"
 THEIRS = Path("/tmp/lg_cmp/lg_rar/minecraft/config/ftbquests/quests/chapters")
 
 RE_LATIN = re.compile(r"[A-Za-z]")

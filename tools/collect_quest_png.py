@@ -20,10 +20,11 @@ import tempfile
 import zipfile
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 
 from PIL import Image
 
-ROOT = Path("/home/ax/Documents/curseforge/minecraft/Instances/Linggango")
+ROOT = INSTANCE
 OUT = Path("/home/ax/Pictures/a/quests")
 WORD = re.compile(r"[A-Za-z]{3,}")
 
@@ -44,7 +45,7 @@ def ocr_one(job):
 
 
 def quest_refs() -> set[str]:
-    sys.path.insert(0, str(ROOT / ".linggango-translate"))
+    sys.path.insert(0, str(HERE))
     from lgq_crypt import decrypt_file, is_encrypted
     refs = set()
     for f in sorted((ROOT / "config/ftbquests/quests").rglob("*.snbt")):

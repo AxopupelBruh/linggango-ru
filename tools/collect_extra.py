@@ -16,8 +16,9 @@ import json
 import re
 import tomllib
 from pathlib import Path
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = INSTANCE
 HERE = Path(__file__).parent
 WORK = HERE / "work"
 

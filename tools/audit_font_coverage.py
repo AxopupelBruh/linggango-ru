@@ -16,9 +16,10 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 from lgq_crypt import decrypt, is_encrypted  # noqa: E402
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = INSTANCE
 FONT_JSON = Path("/tmp/pngwork/mcfont/assets/minecraft/font/include/default.json")
 
 INVISIBLE = {"", "‌", "‍", "⁠"}

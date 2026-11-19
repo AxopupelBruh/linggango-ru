@@ -8,9 +8,10 @@ import json
 import re
 import sys
 from pathlib import Path
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 
 HERE = Path(__file__).parent
-ROOT = HERE.parent
+ROOT = INSTANCE
 LANG_JS = ROOT / "kubejs/client_scripts/lang.js"
 WORK = HERE / "work"
 

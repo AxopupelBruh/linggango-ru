@@ -18,9 +18,10 @@ import re
 import sys
 import zipfile
 from pathlib import Path
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
-MODS = HERE.parent / "mods"
+MODS = INSTANCE / "mods"
 WORK = HERE / "work"
 
 sys.path.insert(0, str(HERE))

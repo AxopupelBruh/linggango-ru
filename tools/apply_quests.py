@@ -18,11 +18,12 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 import lgq_crypt as C  # noqa: E402
 import snbt_text  # noqa: E402
 
 HERE = Path(__file__).parent
-ROOT = HERE.parent
+ROOT = INSTANCE
 QUESTS = ROOT / "config/ftbquests/quests"
 WORK = HERE / "work"
 BACKUP = HERE / "backup/quests_original"

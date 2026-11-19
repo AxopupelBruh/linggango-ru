@@ -22,7 +22,7 @@ import re
 import zipfile
 
 HERE = pathlib.Path(__file__).resolve().parent
-ROOT = HERE.parent
+ROOT = INSTANCE
 MODS = ROOT / "mods"
 CYR = re.compile(r"[а-яёА-ЯЁ]")
 

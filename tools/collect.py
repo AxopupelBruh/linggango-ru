@@ -16,10 +16,11 @@ from collections import defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 import snbt_text  # noqa: E402
 from lang_json import load_lang_json  # noqa: E402
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = INSTANCE
 HERE = Path(__file__).parent
 WORK = HERE / "work"
 MODS = ROOT / "mods"

@@ -6,8 +6,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 import lgq_crypt as C  # noqa: E402
+from paths import INSTANCE  # noqa: E402
 
-QUESTS = Path(__file__).resolve().parents[1] / "config/ftbquests/quests"
+QUESTS = INSTANCE / "config/ftbquests/quests"
 
 # Поля FTB Quests, в которых лежит видимый текст
 TEXT_FIELDS = ("title", "subtitle", "description")

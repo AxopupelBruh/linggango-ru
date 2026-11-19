@@ -16,10 +16,11 @@ import json
 import re
 import sys
 from pathlib import Path
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 WORK = HERE / "work"
-KUBE = HERE.parent / "kubejs"
+KUBE = INSTANCE / "kubejs"
 
 sys.path.insert(0, str(HERE))
 from deepseek_backend import DeepSeekBackend  # noqa: E402

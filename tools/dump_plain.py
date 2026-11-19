@@ -3,8 +3,9 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 import lgq_crypt as C
+from paths import INSTANCE  # noqa: E402
 
-QUESTS = Path(__file__).resolve().parents[1] / "config/ftbquests/quests"
+QUESTS = INSTANCE / "config/ftbquests/quests"
 PLAIN = Path(__file__).parent / "plain"
 
 n = 0

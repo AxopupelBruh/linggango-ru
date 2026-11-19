@@ -17,10 +17,11 @@ import sys
 import threading
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+from paths import INSTANCE, WORK_DIR  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 WORK = HERE / "work"
-ROOT = HERE.parent
+ROOT = INSTANCE
 LOG = ROOT / "logs" / "kubejs" / "client.log"
 
 sys.path.insert(0, str(HERE))
