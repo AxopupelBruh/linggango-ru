@@ -22,20 +22,20 @@ HERE = Path(__file__).resolve().parent
 DEFAULT_INSTANCE = "/home/ax/Documents/curseforge/minecraft/Instances/Linggango"
 
 
-def _instance() -> Path:
+def _instance() -> tuple[Path, str]:
     env = os.environ.get("LINGGANGO_INSTANCE")
     if env:
-        return Path(env).expanduser().resolve()
-    cfg = HERE / "instance.path"
-    if cfg.exists():
-        text = cfg.read_text(encoding="utf-8").strip()
-        if text:
-            return Path(text).expanduser().resolve()
-    return Path(DEFAULT_INSTANCE).expanduser().resolve()
+        return Path(env).expanduser().resolve(), "переменная LINGGANGO_INSTANCE"
+    for cfg in (HERE / "instance.path", HERE.parent / "instance.path"):
+        if cfg.exists():
+            text = cfg.read_text(encoding="utf-8").strip()
+            if text:
+                return Path(text).expanduser().resolve(), f"файл {cfg}"
+    return Path(DEFAULT_INSTANCE).expanduser().resolve(), "значение по умолчанию"
 
 
 #: корень инстанса сборки (mods/, resourcepacks/, config/, kubejs/)
-INSTANCE = _instance()
+INSTANCE, INSTANCE_SOURCE = _instance()
 
 #: рабочие данные перевода (словари, кэши, отчёты)
 WORK = HERE / "work"
@@ -50,7 +50,8 @@ RELEASE = HERE / "release"
 if __name__ == "__main__":
     print(f"рабочий каталог : {HERE}")
     print(f"инстанс сборки  : {INSTANCE}")
-    print(f"  существует?    : {'да' if INSTANCE.exists() else 'НЕТ'}")
-    print(f"  mods/          : {'да' if (INSTANCE / 'mods').exists() else 'НЕТ'}")
+    print(f"  источник      : {INSTANCE_SOURCE}")
+    print(f"  существует?   : {'да' if INSTANCE.exists() else 'НЕТ'}")
+    print(f"  mods/         : {'да' if (INSTANCE / 'mods').exists() else 'НЕТ'}")
     print(f"рабочие данные  : {WORK}")
     print(f"бэкапы          : {BACKUP}")
