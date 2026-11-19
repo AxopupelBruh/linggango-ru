@@ -28,7 +28,8 @@ from paths import INSTANCE, WORK_DIR  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 ROOT = INSTANCE
-STAGE = Path("/home/ax/Documents/Opencode/deepl/linggango-ru")
+# локальная копия репозитория, в который выкладывается релиз
+STAGE = Path("/home/ax/Documents/Opencode/Для сборок переводов/github-archive/linggango-ru")
 REPO = "AxopupelBruh/linggango-ru"
 
 # документы по переводу лежат рядом с рабочим каталогом
