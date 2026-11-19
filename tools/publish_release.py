@@ -61,7 +61,33 @@ DICTS = [
     "ui_strings_manual_ru.json",
 ]
 
-# скрипты
+# скрипты: в релиз идут только рабочие, без одноразовых правок.
+# Список — замыкание конвейера (reapply_translation.py и его шаги, сборка релиза,
+# проверки) плюс всё, на что ссылаются docs/ репозитория.
+TOOL_KEEP = (
+    "apply_act_titles.py", "apply_extra.py", "apply_kubejs.py",
+    "apply_machinery_lang.py", "apply_manual_round4.py", "apply_quests.py",
+    "audit_case.py", "audit_font_coverage.py", "audit_terms.py",
+    "brands.py", "build_glossary.py", "build_png_gallery.py",
+    "build_resourcepack.py", "build_tooltip_script.py", "classfile.py",
+    "cleanup_brands.py", "collect.py", "collect_extra.py",
+    "collect_fix_targets.py", "collect_quest_png.py", "collect_text_png.py",
+    "compare_github.py", "deepl_backend.py", "deepseek_backend.py",
+    "deepseek_driver.py", "dump_plain.py", "extract_quests.py",
+    "fill_lang_gap.py", "fix_books.py", "fix_case.py", "fix_java_strings.py",
+    "fix_patchouli.py", "fix_patchouli_labels.py", "fix_translate.py",
+    "fix_ui_brands.py", "fix_zwnj.py", "fixup.py", "ftbq_parse.py",
+    "gemini_backend.py", "install_community_translation.py", "lang_json.py",
+    "lgq_crypt.py", "manual_extra.py", "manual_fixes.py",
+    "manual_github_merge.py", "manual_machines.py", "merge_ui_caches.py",
+    "normalize_terms.py", "paths.py", "polish_ru.py", "publish_release.py",
+    "reapply_translation.py", "repair_markup.py",
+    "restore_our_translation.py", "run.py", "scan_java_strings.py",
+    "scan_ui_strings.py", "snbt_text.py", "sync_books_datapack.py",
+    "tr_engine.py", "translate_runtime_missing.py", "translate_ui_deepseek.py",
+    "verify.py", "verify_all.py", "verify_pack.py", "verify_quests.py",
+)
+
 TOOL_SKIP = {"generated_ru_tooltip_translator.js"}
 
 
@@ -127,10 +153,12 @@ def _build_into(stage: Path) -> None:
         print("  docs/SYSTEM_PROMPT_EN_RU.txt")
     tools_dir = stage / "tools"
     tools_dir.mkdir(parents=True, exist_ok=True)
-    for p in sorted(HERE.glob("*.py")):
-        if p.name.startswith("_"):
+    for name in TOOL_KEEP:
+        p = HERE / name
+        if not p.exists():
+            print(f"  НЕТ tools/{name}")
             continue
-        shutil.copy2(p, tools_dir / p.name)
+        shutil.copy2(p, tools_dir / name)
         n += 1
     for p in sorted(HERE.glob("*.js")):
         if p.name in TOOL_SKIP:
@@ -148,20 +176,22 @@ def _build_into(stage: Path) -> None:
     print("секретов в релизе нет")
 
 
-def push() -> None:
+DEFAULT_MSG = "Liggango: полный перевод сборки на русский"
+
+
+def push(message: str = DEFAULT_MSG) -> None:
     def run(*args: str) -> None:
         subprocess.run(args, cwd=STAGE, check=True)
 
     if not (STAGE / ".git").exists():
         run("git", "init", "-b", "main")
     run("git", "add", "-A")
-    run("git", "-c", "user.name=AxopupelBruh",
-        "-c", "user.email=306857641+AxopupelBruh@users.noreply.github.com",
-        "commit", "-m", "Liggango: полный перевод сборки на русский")
+    run("git", "commit", "-m", message)
     run("git", "push", "-u", "origin", "main")
 
 
 if __name__ == "__main__":
     build()
     if "--push" in sys.argv:
-        push()
+        msg = sys.argv[sys.argv.index("--msg") + 1] if "--msg" in sys.argv else DEFAULT_MSG
+        push(msg)
