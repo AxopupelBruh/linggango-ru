@@ -148,8 +148,8 @@ def build_lang_files(out: Path, translations: dict[str, str]) -> tuple[int, int]
                     merged[key] = ru
                     changed += 1
                 continue
-            # у мода есть собственный перевод — не трогаем его, кроме регистра
-            # и транслитераций брендов (ФТБ → FTB, ДЖЭИ → JEI и т.п.)
+            # у мода есть собственный перевод — обычно не трогаем его.
+            # Исключения: битые %-аргументы, английский текст вместо перевода.
             if placeholder_signature(cur)[0] != placeholder_signature(val)[0]:
                 # чужой перевод потерял или испортил %-аргументы / §-коды:
                 # в игре это «%с» вместо значения. Чиним своим переводом,
@@ -158,6 +158,13 @@ def build_lang_files(out: Path, translations: dict[str, str]) -> tuple[int, int]
                     merged[key] = ru
                 else:
                     merged[key] = val
+                changed += 1
+                continue
+            if ru and ru.strip() and not CYR.search(cur) and CYR.search(ru):
+                # мод приложил «перевод» без единой русской буквы (сдвинутые
+                # ключи у terramity, английский текст у mahoutsukai и т.п.) —
+                # берём наш перевод, он точно про этот ключ.
+                merged[key] = ru
                 changed += 1
                 continue
             fixed = fix_start_case(val, cur)
