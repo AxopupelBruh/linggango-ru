@@ -324,21 +324,35 @@ def main():
     zip_pack(stage, zip_path)
     print(f"ресурспак: {zip_path} ({zip_path.stat().st_size // 1024} КБ)")
 
-    # регистрируем пак в конфиге сборки (последним = высший приоритет) и в options.txt
+    # Регистрируем пак в конфиге сборки и в options.txt.
+    # ВАЖНО: список паков упорядочен от низшего приоритета к высшему,
+    # поэтому наш пак должен быть ПОСЛЕДНИМ — иначе его перекроют
+    # чужие локализации (MPLOCmods и т.п.).
+    entry = f'"file/{PACK_NAME}.zip"'
+
+    def put_last(text: str, prefix: str) -> str:
+        """Ставит запись последней в списке паков (и убирает старую копию)."""
+        m = re.search(re.escape(prefix) + r"\[(.*?)\]", text, flags=re.S)
+        if not m:
+            return text
+        items = [it.strip() for it in m.group(1).split(",") if it.strip()]
+        items = [it for it in items if it != entry]
+        items.append(entry)
+        return text[:m.start(1)] + ", ".join(items) + text[m.end(1):]
+
     toml = ROOT / "config/linggango-resourcepacks.toml"
     text = toml.read_text(encoding="utf-8")
-    entry = f'"file/{PACK_NAME}.zip"'
-    if entry not in text:
-        text = text.replace('packs = [', 'packs = [' + entry + ', ', 1)
-        toml.write_text(text, encoding="utf-8")
-        print("добавлен в linggango-resourcepacks.toml")
+    new_text = put_last(text, "packs = ")
+    if new_text != text:
+        toml.write_text(new_text, encoding="utf-8")
+        print("наш пак последний в linggango-resourcepacks.toml")
 
     opts = ROOT / "options.txt"
     otext = opts.read_text(encoding="utf-8")
-    if entry not in otext:
-        otext = re.sub(r'(resourcePacks:\[)', r'\1' + entry + ',', otext, count=1)
-        opts.write_text(otext, encoding="utf-8")
-        print("добавлен в options.txt")
+    new_otext = put_last(otext, "resourcePacks:")
+    if new_otext != otext:
+        opts.write_text(new_otext, encoding="utf-8")
+        print("наш пак последний в options.txt")
 
 
 if __name__ == "__main__":

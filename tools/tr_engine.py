@@ -433,8 +433,9 @@ class Translator:
             mapping = dict(zip(batch, translated))
             cache.put_many(mapping)
             done += len(batch)
+            cache.save()
+            print(f"  ... переведено {done}/{len(todo)} (кэш {len(cache)})", flush=True)
             if done % 200 < len(batch):
-                cache.save()
                 print(f"  ... переведено {done}/{len(todo)} (кэш {len(cache)})", flush=True)
         cache.save()
         return {ln: cache.get(ln) for ln in lines}

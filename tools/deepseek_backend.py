@@ -222,6 +222,18 @@ class DeepSeekBackend:
                                 break
                     except json.JSONDecodeError:
                         data = None
+        if isinstance(data, dict):
+            # модель часто отвечает объектом {"translations": [...]} — это валидный
+            # JSON, поэтому ветка выше его не разбирала: достаём список из объекта
+            for key in ("translations", "result", "results", "items", "lines"):
+                val = data.get(key)
+                if isinstance(val, list):
+                    data = val
+                    break
+            else:
+                lists = [v for v in data.values() if isinstance(v, list)]
+                if len(lists) == 1:
+                    data = lists[0]
         if not isinstance(data, list) or len(data) != n:
             got = len(data) if isinstance(data, list) else "не список"
             raise RuntimeError(f"deepseek: ожидалось {n} строк, получено {got}")
