@@ -1,7 +1,7 @@
 """Переводит собранные строки и складывает результат в work/<source>_ru.json.
 
-  ./venv/bin/python run.py --source quests --backend deepl
-  ./venv/bin/python run.py --source mods --backend google --limit 40 --demo
+  python3 run.py --source quests --backend deepl
+  python3 run.py --source mods --backend google --limit 40 --demo
 """
 import argparse
 import json

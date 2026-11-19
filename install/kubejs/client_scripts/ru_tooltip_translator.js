@@ -1,7 +1,7 @@
 // ===========================================================================
 // Русский перевод подсказок (тултипов) модов — модпак Linggango.
 //
-// СГЕНЕРИРОВАНО АВТОМАТИЧЕСКИ: .linggango-translate/build_tooltip_script.py
+// СГЕНЕРИРОВАНО АВТОМАТИЧЕСКИ: linggango/workspace/build_tooltip_script.py
 // Правь переводы в work/ui_strings_ru.json и work/pack_script_ru.json,
 // потом запусти build_tooltip_script.py заново.
 //
