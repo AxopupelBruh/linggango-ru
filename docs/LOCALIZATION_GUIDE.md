@@ -35,7 +35,8 @@
 | `work/*.json` | словари-переводы (источник для сборщика) | mods_ru 33 723 · ui_strings_ru 7 990 · quests_ru 25 851 · patchouli_ru 8 528 · pack_script_ru 262 |
 | `work/terms_merged.json` | глоссарий EN→RU | 17 091 термин (12 438 mined + 4 768 ванильных) |
 | `work/en_vocab.json` | словарь английских слов из lang-файлов (для OCR-фильтра) | 26 811 слов |
-| `backup/jars_original/`, `backup/quests_original/` | бэкапы оригиналов | для отката и сверки md5 |
+| `backup/jars_original.md5` | база md5 оригинальных jar-ов (28 шт.) | сверка, что моды не патчились |
+| `backup/quests_original/` | бэкапы оригиналов квестов | для отката и сверки структуры |
 
 Покрытие строк из Java-кода модов: **7 990 из 7 998** (DeepSeek — 7 950, DeepL — 21,
 без перевода 8 — HEX-коды и внутренние имена `GolemHeart DAB/KR/SAB/STB`).
@@ -337,12 +338,39 @@ python3 linggango/workspace/audit_font_coverage.py
 
 Кэши (`work/cache_*.json`) не терять: повторный запуск не тратит лимит.
 
+### Что в мастерской можно удалять, а что нельзя
+
+Мастерская — `linggango/workspace/` (167 МБ). Всё лишнее вычищено
+19.11.2026; осталось только то, что нужно живому конвейеру.
+
+| Оставляем | Почему |
+|---|---|
+| `work/*_ru.json` | итоговые словари переводов — источник для сборщика |
+| `work/terms_merged.json`, `work/terms_mined.json`, `work/en_vocab.json` | термины и словарь |
+| `work/cache_deepl.json`, `work/cache_deepseek*.json`, `cache_google.json` | экономят лимит API: повторный запуск не платит заново |
+| `work/ui_strings.json`, `work/ui_strings_ru_deepl.json` | входы перевода UI-строк |
+| `backup/jars_original.md5` | база сверки md5 ( сами jar-ы не нужны) |
+| `backup/quests_original/` | оригиналы квестов — из них регенерируется `plain/` |
+| `glossary.json` | глоссарий EN→RU (пересобрать: `python3 build_glossary.py`) |
+| `term_map_quests_google.json` | эталон терминов для `audit_terms.py` |
+
+| Удалено | Чем восстановить |
+|---|---|
+| `plain/` | `python3 dump_plain.py` (берёт оригиналы из `backup/quests_original`) |
+| `pack_build/` | `python3 build_resourcepack.py` (сборочная папка) |
+| `generated_ru_tooltip_translator.js` | `python3 build_tooltip_script.py` |
+| `work/cache_deepseek_ui_p*.json` | слиты в `work/cache_deepseek_ui_all.json` |
+| `work/*.bak`, `*_prev.json`, `*.pre_*.json`, `*_before_*.json` | промежуточные снимки, не нужны |
+| `backup/pre_polish/`, `backup/quests_backup.tgz` | снимки до вычитки, дубли |
+| `venv/` | все зависимости есть в системном Python: `python3 скрипт.py` |
+| `config/`, `cache_google_fix_*.json`, `term_map_*.json` (кроме эталона) | дубли и мёртвые промежуточные состояния |
+
 ---
 
 ## 8. КРИТЕРИИ ПРИЁМКИ
 
 - [ ] `verify_all.py` → «ВСЁ ОК»
-- [ ] md5 всех jar совпадают с `backup/jars_original/` (28/28 и далее — все)
+- [ ] md5 всех jar совпадают с `backup/jars_original.md5` (28/28 и далее — все)
 - [ ] `zz_linggango_ru.zip` — последний в `options.txt` **и** в `linggango-resourcepacks.toml`
 - [ ] `MPLOCmods.zip` — строго перед ним
 - [ ] zip целостен (`testzip()` = None)

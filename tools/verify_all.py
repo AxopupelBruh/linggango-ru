@@ -22,6 +22,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = INSTANCE
 MODS = ROOT / "mods"
 BACKUP = HERE / "backup" / "jars_original"
+MD5LIST = HERE / "backup" / "jars_original.md5"
 WORK = HERE / "work"
 PACK = ROOT / "resourcepacks" / "zz_linggango_ru.zip"
 SCRIPT = ROOT / "kubejs" / "client_scripts" / "ru_tooltip_translator.js"
@@ -58,8 +59,26 @@ if BACKUP.exists():
             print(f"     изменён: {b.name}")
     check(diff == 0 and missing == 0,
           f"совпадают с оригиналами: {same}, изменено: {diff}, отсутствует: {missing}")
+elif MD5LIST.exists():
+    same = diff = missing = 0
+    for line in MD5LIST.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        digest, name = line.split(None, 1)
+        p = MODS / name.strip()
+        if not p.exists():
+            missing += 1
+            continue
+        if hashlib.md5(p.read_bytes()).hexdigest() == digest:
+            same += 1
+        else:
+            diff += 1
+            print(f"     изменён: {name.strip()}")
+    check(diff == 0 and missing == 0,
+          f"совпадают с базой md5: {same}, изменено: {diff}, отсутствует: {missing}")
 else:
-    print("  (бэкапов нет — нечего проверять)")
+    print("  (бэкапов и базы md5 нет — нечего проверять)")
 
 head("2. ресурспак")
 check(PACK.exists(), f"файл есть: {PACK.name}")
