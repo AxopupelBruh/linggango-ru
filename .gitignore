@@ -1,0 +1,21 @@
+# Ключи API — никогда не в репозиторий
+*key*
+*.env
+*.pem
+
+# Виртуальное окружение и кэш Python
+venv/
+__pycache__/
+*.pyc
+
+# Промежуточные артефакты сборки
+pack_build/
+plain/
+backup/
+*cache_*.json
+*.bak
+work/*.json.bak
+
+# Системный мусор
+.DS_Store
+Thumbs.db

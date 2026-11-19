@@ -1,0 +1,654 @@
+{
+ "type": "minecraft:chest",
+ "pools": [
+  {
+   "rolls": {
+    "min": 3,
+    "max": 6
+   },
+   "bonus_rolls": 2,
+   "entries": [
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:book",
+     "weight": 2,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "min": 4,
+        "max": 8
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:paper",
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "min": 10,
+        "max": 25
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:string",
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "min": 4,
+        "max": 12
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:sugar_cane",
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "min": 6,
+        "max": 20
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:phantom_membrane",
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "min": 4,
+        "max": 6
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:lead",
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "min": 1,
+        "max": 5
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:firework_rocket",
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "min": 5,
+        "max": 20
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:ghast_tear",
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "min": 1,
+        "max": 5
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rolls": 1,
+   "entries": [
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:written_book",
+     "functions": [
+      {
+       "function": "minecraft:set_name",
+       "name": {
+        "text": "Valheim",
+        "color": "#58ff4d",
+        "bold": true,
+        "italic": false
+       }
+      },
+      {
+       "function": "minecraft:set_lore",
+       "lore": [
+        {
+         "text": "By Iron Gate AB",
+         "color": "#4c9447"
+        }
+       ],
+       "mode": "insert"
+      },
+      {
+       "function": "minecraft:set_written_book_pages",
+       "pages": [
+        {
+         "raw": "ОБ ЭТОЙ ИГРЕ Valheim — суровая игра об исследовании и выживании для 1–10 игроков в процедурно генерируемом мире, вдохновлённом скандинавской мифологией. Создавайте мощное оружие, возводите длинные дома и сражайте могучих врагов, чтобы доказать Одину, на что вы способны!"
+        },
+        {
+         "raw": "ИССЛЕДУЙТЕ ДЕСЯТЫЙ МИР Исследуйте мир, окутанный тайной. Открывайте непохожие биомы с уникальными врагами, собирайте ресурсы и раскрывайте секреты! Станьте викингом, бороздите открытые моря в поисках неизведанных земель и сражайтесь с кровожадными монстрами."
+        },
+        {
+         "raw": "ВОЗВОДИТЕ МОГУЧИЕ ЧЕРТОГИ Стройте длинные дома викингов и базы, где можно укрыться от грядущих опасностей. Настраивайте здания снаружи и внутри с помощью детальной строительной системы. Проходите ступени строительства, чтобы улучшать, расширять и защищать свою базу."
+        },
+        {
+         "raw": "СОБИРАЙТЕ, СОЗДАВАЙТЕ И ВЫЖИВАЙТЕ Боритесь за выживание: собирайте материалы и создавайте оружие, броню, инструменты, корабли и защитные сооружения. Обустраивайте свои очаги и точите клинки, выращивайте урожай и овощи, готовьте еду, варите медовухи и зелья, продвигайтесь вперёд, побеждая всё более сложных боссов и открывая новые рецепты и чертежи."
+        },
+        {
+         "raw": "КЛЮЧЕВЫЕ ОСОБЕННОСТИ: огромный процедурно генерируемый мир, где каждый биом по-своему атмосферен и уникален, с уникальными врагами, ресурсами и рецептами для открытия. Играйте в одиночку или с компанией до 10 игроков на выделенных серверах, размещённых игроками, и наслаждайтесь неограниченным созданием миров и врагами, которые становятся всё сложнее."
+        },
+        {
+         "raw": "Бой на основе выносливости, который вознаграждает подготовку и мастерство. Используйте типы оружия с уникальными атаками, разные стили блокирования, дальний бой, уклонения и парирования, чтобы сражаться с врагами. Продуманная система еды: голод вам не грозит, и отсутствие еды вас не наказывает — вместо этого вы получаете бонусы к здоровью, выносливости и регенерации в зависимости от съеденной пищи."
+        },
+        {
+         "raw": "Интуитивно понятный процесс крафта, в котором рецепты открываются по мере изучения мира и сбора новых ресурсов и ингредиентов. Гибкая система строительства, учитывающая прочность конструкций и вентиляцию. Постройте небольшое укрытие или целую деревню, создавайте аванпосты или захватывайте заброшенные здания. А затем настройте их по своему вкусу."
+        },
+        {
+         "raw": "Отправляйтесь на парусных лодках и кораблях в далекие земли и исследуйте море, где вас ждут сокровища и сражения с чудовищами. Эпические сражения с боссами, которые станут испытанием даже для самых подготовленных викингов, принесут вам награды, которые помогут вам в путешествии."
+        },
+        {
+         "raw": "Языки, переведённые сообществом: Помимо официально поддерживаемых языков, в игре Valheim доступно несколько языков, переведённых сообществом. Как следует из названия, все эти переводы выполнены фанатами и участниками сообщества, и эта работа продолжается. Мы не можем гарантировать ни качество, ни полноту какого-либо конкретного перевода."
+        },
+        {
+         "raw": "РЕКОМЕНДУЕМОЕ: Требуется 64-разрядный процессор и операционная система ОС *: Windows 7 или более поздней версии Процессор: i5 3 ГГц или Ryzen 5 3 ГГц Память: 16 ГБ ОЗУ Видеокарта: GeForce GTX 1060 или Radeon RX 580 DirectX: версия 11 Сеть: широкополосное подключение к Интернету Место на диске: 1 ГБ свободного места"
+        }
+       ],
+       "mode": "append"
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:written_book",
+     "functions": [
+      {
+       "function": "minecraft:set_name",
+       "name": {
+        "text": "The Hobbit",
+        "color": "#54f8c1",
+        "bold": true,
+        "italic": false
+       }
+      },
+      {
+       "function": "minecraft:set_written_book_pages",
+       "pages": [
+        {
+         "raw": "В норе в земле жил хоббит. Это была не грязная, сырая нора, полная обрывков червей и с запахом грязи, и не сухая, голая, песчаная нора, где не на чем было присесть и нечего было поесть: это была хоббитская нора, а это значит — уют."
+        },
+        {
+         "raw": "У неё была идеально круглая дверь, похожая на иллюминатор, окрашенная в зелёный цвет, с блестящей жёлтой латунной ручкой ровно посередине. Дверь выходила в трубообразный коридор, похожий на туннель:"
+        },
+        {
+         "raw": "очень уютный туннель без дыма, со стенами, обшитыми панелями, полами, выложенными плиткой и покрытыми ковролином, с полированными стульями и множеством-множеством крючков для шляп и пальто — хоббит очень любил гостей."
+        },
+        {
+         "raw": "Туннель тянулся бесконечно, уходя довольно ровно, но не совсем прямо в склон холма — «Холма», как называли его все жители в радиусе многих миль, — и из него открывалось множество маленьких круглых дверей, то с одной стороны, то с другой."
+        },
+        {
+         "raw": "Хоббиту не приходилось подниматься наверх: спальни, ванные комнаты, погреба, кладовые (их было много), гардеробные (у него были целые комнаты, отведенные под одежду), кухни, столовые — всё это находилось на одном этаже и, более того, в одном коридоре."
+        },
+        {
+         "raw": "Лучшие комнаты находились все с левой стороны (если входить), так как только в них были окна — глубоко посаженные круглые окна, из которых открывался вид на его сад и на луга за ним, спускающиеся к реке."
+        }
+       ],
+       "mode": "append"
+      },
+      {
+       "function": "minecraft:set_lore",
+       "lore": [
+        {
+         "text": "By J.R.R. Tolkien",
+         "color": "#4baa8a"
+        }
+       ],
+       "mode": "append"
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:written_book",
+     "functions": [
+      {
+       "function": "minecraft:set_name",
+       "name": {
+        "text": "Amazon Support",
+        "color": "#ffac4d",
+        "bold": true,
+        "italic": false
+       }
+      },
+      {
+       "function": "minecraft:set_lore",
+       "lore": [
+        {
+         "text": "By Jeff Bozo",
+         "color": "#c97b3b"
+        }
+       ],
+       "mode": "insert"
+      },
+      {
+       "function": "minecraft:set_written_book_pages",
+       "pages": [
+        {
+         "raw": "Меня зовут Мухаммад, я работаю в службе технической поддержки Amazon. Сэр, с вашего счета списано 1 миллион долларов. Если вы не тратили 1 миллион долларов, напишите мне, и я верну вам деньги. Для этого вам нужно будет предоставить мне пароль к вашему банковскому счету. Спасибо, Мухаммад Ахмед Наги."
+        }
+       ],
+       "mode": "append"
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:written_book",
+     "functions": [
+      {
+       "function": "minecraft:set_name",
+       "name": {
+        "translate": "Příběh malého krtečka",
+        "color": "#ff5c5c",
+        "bold": true,
+        "italic": false
+       }
+      },
+      {
+       "function": "minecraft:set_lore",
+       "lore": [
+        {
+         "text": "By Zdeněk Miler",
+         "color": "#ff9494"
+        }
+       ],
+       "mode": "append"
+      },
+      {
+       "function": "minecraft:set_written_book_pages",
+       "pages": [
+        {
+         "raw": "Однажды вечером Кртек весело копал в лесу, когда наткнулся на нечто странное — нору, которая не принадлежала ему."
+        },
+        {
+         "raw": "Там было темно и глубоко, и пахло сырой землёй и чем-то… гнилым."
+        },
+        {
+         "raw": "Из любопытства он заглянул внутрь. Из глубины донесся шепот: «Подойди поближе, маленький крот…» Крот замер, его крошечные лапки задрожали."
+        },
+        {
+         "raw": "Но не успел он и бежать, как из норы вырвались корни и обхватили его!"
+        },
+        {
+         "raw": "Они стащили его вниз. Последнее, что он увидел, — это луна над головой, которая становилась всё меньше, пока его утаскивали во тьму."
+        },
+        {
+         "raw": "На следующее утро в лесу появился новый холмик из земли."
+        },
+        {
+         "raw": "Но на этот раз это сделал не Кртек."
+        },
+        {
+         "raw": "КОНЕЦ"
+        }
+       ],
+       "mode": "append"
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:written_book",
+     "functions": [
+      {
+       "function": "minecraft:set_lore",
+       "lore": [
+        {
+         "text": "By Nidintu-Bêl",
+         "color": "#a2982f"
+        }
+       ],
+       "mode": "append"
+      },
+      {
+       "function": "minecraft:set_name",
+       "name": {
+        "translate": "Ancient Babylonian Script",
+        "color": "#f3f702",
+        "bold": true,
+        "italic": false
+       }
+      },
+      {
+       "function": "minecraft:set_written_book_pages",
+       "pages": [
+        {
+         "raw": "Сначала это были просто странные звуки под полом — тихое шуршание, словно от грызунов. Но специалисты по дезинсекции ничего не обнаружили. Затем стали пропадать мелкие вещи, а вслед за этим на полу стали появляться разбросанные предметы."
+        },
+        {
+         "raw": "Прошло несколько дней, и на внутренней стороне двери спальни обнаружились глубокие царапины. Это были не следы от когтей, а царапины от маленьких ногтей."
+        },
+        {
+         "raw": "Шумы под полом теперь не утихали в течение всего дня — под ногами постоянно слышалось шуршание."
+        },
+        {
+         "raw": "На шестой день было решено проверить, что скрывается под отклеившейся доской пола в прихожей. Из-под пола на них уставились десятки гномов, каждый в красной шапочке и с запятнанной кровью бородой."
+        },
+        {
+         "raw": "Проклятие обрушилось, было уже слишком поздно, надежды не осталось.  Прибивал пол гвоздями. Спал с ножом. Вызывал полицию.  Но этого было недостаточно."
+        },
+        {
+         "raw": "Надвигается туман, конец близится, гномы наконец-то пришли..."
+        }
+       ],
+       "mode": "append"
+      }
+     ],
+     "conditions": [
+      {
+       "condition": "minecraft:random_chance",
+       "chance": 0.5
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:written_book",
+     "functions": [
+      {
+       "function": "minecraft:set_name",
+       "name": {
+        "text": "Steam Check System",
+        "color": "#36a3ec",
+        "bold": true,
+        "italic": false
+       }
+      },
+      {
+       "function": "minecraft:set_lore",
+       "lore": [
+        {
+         "text": "By Steam",
+         "color": "#3d7699"
+        }
+       ],
+       "mode": "insert"
+      },
+      {
+       "function": "minecraft:set_written_book_pages",
+       "pages": [
+        {
+         "text": "This comment is awaiting analysis by our automated content check system. It will be temporarily hidden until we verify that it does not contain harmful content (e.g. links to websites that attempt to steal information).",
+         "color": "#04cef6",
+         "bold": true,
+         "italic": false
+        },
+        {
+         "text": "1 VAC ban on record | Info 1791 day(s) since last ban",
+         "color": "#a94847",
+         "bold": true,
+         "italic": false
+        }
+       ],
+       "mode": "append"
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:written_book",
+     "functions": [
+      {
+       "function": "minecraft:set_name",
+       "name": {
+        "text": "RAID: Shadow Legends ",
+        "color": "#ff4d00",
+        "bold": true,
+        "italic": false
+       }
+      },
+      {
+       "function": "minecraft:set_lore",
+       "lore": [
+        {
+         "text": "One of the best games",
+         "color": "#995138"
+        }
+       ],
+       "mode": "insert"
+      },
+      {
+       "function": "minecraft:set_written_book_pages",
+       "pages": [
+        {
+         "raw": "RAID: Shadow Legends™ — это захватывающая онлайн-игра, в которой есть всё, что можно ожидать от новой ролевой игры. В ней вас ждут увлекательный сюжет, потрясающая 3D-графика, сражения с гигантскими боссами, PvP-сражения, а также сотни уникальных героев, которых можно собирать и настраивать по своему усмотрению."
+        },
+        {
+         "raw": "Я и не думал, что мобильная игра сможет показать такую производительность. Посмотрите, насколько потрясающе проработаны эти чемпионы!"
+        },
+        {
+         "raw": "RAID: Shadow Legends™ стремительно набирает популярность, так что вам обязательно стоит присоединиться к игре как можно раньше. Начав играть прямо сейчас, вы получите огромное преимущество. Кроме того, скоро состоится специальный турнир, посвящённый запуску игры, с потрясающими призами! И, конечно же, эта игра абсолютно бесплатна!"
+        },
+        {
+         "raw": "Так что не стесняйтесь — загляните в описание видео, чтобы узнать больше о RAID: Shadow Legends™. Там вы найдёте ссылку на страницу в магазине и специальный код, позволяющий разблокировать множество полезных вещей. Используя этот код, вы сразу получите 50 000 серебра, а также БЕСПЛАТНОГО чемпиона эпического уровня в рамках программы для новых игроков — конечно же, благодаря разработчикам RAID: Shadow Legends™."
+        }
+       ],
+       "mode": "append"
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:written_book",
+     "functions": [
+      {
+       "function": "minecraft:set_name",
+       "name": {
+        "text": "Spongebob",
+        "color": "#b8f877",
+        "bold": true,
+        "italic": false
+       }
+      },
+      {
+       "function": "minecraft:set_lore",
+       "lore": [
+        {
+         "text": "سبونج بوب",
+         "color": "#75a249"
+        }
+       ],
+       "mode": "append"
+      },
+      {
+       "function": "minecraft:set_written_book_pages",
+       "pages": [
+        {
+         "raw": "سبونج بوب بوب بوب بوب انا سبونج بوب انا سبونج بوب سفنجه و ده لونى انا سبونج بوب انا سبونج بوب اصفر كمونى انا سبونج بوب انا سبونج بوب سفنجه و ده لونى انا سبونج بوب انا سبونج بوب اصفر كمونى"
+        },
+        {
+         "raw": "انا بقا كدا صيتى مسمع انا واد مجدع من يومى مهما لعبت طلعت نزلت انا مبسوخش هدومى بلعب 120 ضغط اول مقوم من نوم و توم و جيرى بيتفقو عليا فكرنى جبنه رومى"
+        },
+        {
+         "raw": "شخبطه لغبطه حاجة متظبطه شكلها بقا كدا كدا متخططه شخبطه لغبطه حاجة متظبطه عايزنكو تنامو تشدو الغطاء شخبطه لغبطه حاجة متظبطه حاسس ان حياتى مش متظبطه"
+        }
+       ],
+       "mode": "append"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rolls": 1,
+   "entries": [
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:book",
+     "functions": [
+      {
+       "function": "minecraft:enchant_with_levels",
+       "levels": {
+        "min": 10,
+        "max": 30
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:bow",
+     "functions": [
+      {
+       "function": "minecraft:set_name",
+       "name": {
+        "text": "The Mongolian Longbow",
+        "color": "#c37aff",
+        "bold": true,
+        "italic": false
+       }
+      },
+      {
+       "function": "minecraft:set_lore",
+       "lore": [
+        {
+         "text": "Attila my beloved",
+         "color": "#8151a9"
+        }
+       ],
+       "mode": "insert"
+      },
+      {
+       "function": "minecraft:set_enchantments",
+       "enchantments": {
+        "minecraft:power": 2,
+        "minecraft:unbreaking": 2,
+        "minecraft:multishot": 1
+       }
+      }
+     ],
+     "conditions": [
+      {
+       "condition": "minecraft:random_chance",
+       "chance": 0.5
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:iron_axe",
+     "functions": [
+      {
+       "function": "minecraft:set_name",
+       "name": {
+        "translate": "Iron BattleAxe",
+        "color": "#00ff2a",
+        "bold": true,
+        "italic": false
+       }
+      },
+      {
+       "function": "minecraft:set_lore",
+       "lore": [
+        {
+         "text": "Mulitpurpose",
+         "color": "#489d56"
+        }
+       ],
+       "mode": "append"
+      },
+      {
+       "function": "minecraft:set_enchantments",
+       "enchantments": {
+        "minecraft:sharpness": 3,
+        "minecraft:unbreaking": 3
+       }
+      }
+     ],
+     "conditions": [
+      {
+       "condition": "minecraft:random_chance",
+       "chance": 0.5
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:end_crystal",
+     "conditions": [
+      {
+       "condition": "minecraft:random_chance",
+       "chance": 0.5
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:book",
+     "functions": [
+      {
+       "function": "minecraft:enchant_with_levels",
+       "levels": {
+        "min": 10,
+        "max": 30
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:fishing_rod",
+     "functions": [
+      {
+       "function": "minecraft:set_name",
+       "name": {
+        "text": "Here Be Treasure",
+        "color": "#ffc800",
+        "bold": true,
+        "italic": false
+       }
+      },
+      {
+       "function": "minecraft:set_lore",
+       "lore": [
+        {
+         "text": "I love treasure hunting!",
+         "color": "#9b8741"
+        }
+       ],
+       "mode": "insert"
+      },
+      {
+       "function": "minecraft:set_enchantments",
+       "enchantments": {
+        "minecraft:luck_of_the_sea": 7,
+        "minecraft:unbreaking": 4
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
