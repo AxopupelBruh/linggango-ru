@@ -19,7 +19,11 @@ import collections
 import json
 import pathlib
 import re
+import sys
 import zipfile
+
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
+from paths import INSTANCE  # noqa: E402
 
 HERE = pathlib.Path(__file__).resolve().parent
 ROOT = INSTANCE

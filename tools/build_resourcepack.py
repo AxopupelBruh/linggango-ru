@@ -72,6 +72,13 @@ def fix_start_case(en: str, ru: str) -> str:
     return lead + rest[:i] + rest[i].upper() + rest[i + 1:]
 
 
+def placeholder_signature(text: str) -> tuple:
+    """Аргументы форматирования и §-коды: их набор менять нельзя."""
+    args = sorted(re.findall(r"%(?:\d+\$)?[sdif]", text))
+    codes = sorted(re.findall(r"§[0-9a-fk-or]", text))
+    return tuple(args), tuple(codes)
+
+
 def build_lang_files(out: Path, translations: dict[str, str]) -> tuple[int, int]:
     """Пишет assets/<ns>/lang/ru_ru.json.
 
@@ -143,6 +150,16 @@ def build_lang_files(out: Path, translations: dict[str, str]) -> tuple[int, int]
                 continue
             # у мода есть собственный перевод — не трогаем его, кроме регистра
             # и транслитераций брендов (ФТБ → FTB, ДЖЭИ → JEI и т.п.)
+            if placeholder_signature(cur)[0] != placeholder_signature(val)[0]:
+                # чужой перевод потерял или испортил %-аргументы / §-коды:
+                # в игре это «%с» вместо значения. Чиним своим переводом,
+                # а если его нет — откатываемся на английский.
+                if ru and ru.strip() and placeholder_signature(ru)[0] == placeholder_signature(val)[0]:
+                    merged[key] = ru
+                else:
+                    merged[key] = val
+                changed += 1
+                continue
             fixed = fix_start_case(val, cur)
             fixed = restore_brands(val, fixed)
             if fixed != cur:
@@ -209,7 +226,7 @@ def build_patchouli(out: Path, translations: dict[str, str],
             z = zipfile.ZipFile(jar)
         except Exception:
             continue
-        # какие книги уже имеют ru_ru — их не трогаем
+        # какие страницы уже имеют ru_ru — только их не трогаем
         has_ru = set()
         for name in z.namelist():
             if "patchouli_books" not in name:
@@ -219,7 +236,7 @@ def build_patchouli(out: Path, translations: dict[str, str],
                 continue
             i = parts.index("patchouli_books")
             if len(parts) > i + 2 and parts[i + 2] == "ru_ru":
-                has_ru.add((parts[i - 1], parts[i + 1]))
+                has_ru.add((parts[i - 1], parts[i + 1], "/".join(parts[i + 3:])))
         for name in z.namelist():
             if "patchouli_books" not in name or not name.endswith(".json"):
                 continue
@@ -231,7 +248,8 @@ def build_patchouli(out: Path, translations: dict[str, str],
             if len(parts) <= i + 2 or parts[i + 2] != "en_us":
                 continue
             ns, book = parts[i - 1], parts[i + 1]
-            if (ns, book) in has_ru:
+            rel = Path(*parts[i + 3:]) if len(parts) > i + 3 else Path(name.split("/")[-1])
+            if (ns, book, rel.as_posix()) in has_ru:
                 continue
             try:
                 data = load_lang_json(z.read(name))
@@ -261,7 +279,6 @@ def build_patchouli(out: Path, translations: dict[str, str],
                             walk(v)
 
             walk(data)
-            rel = Path(*parts[i + 3:]) if len(parts) > i + 3 else Path(name.split("/")[-1])
             target = out / "assets" / ns / "patchouli_books" / book / "ru_ru" / rel
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
