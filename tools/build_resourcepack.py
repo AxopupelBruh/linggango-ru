@@ -79,6 +79,24 @@ def placeholder_signature(text: str) -> tuple:
     return tuple(args), tuple(codes)
 
 
+# Пространства имён, где мод приложил перевод от старой версии и строки
+# съехали по ключам (armageddon_mod: тултипы оружия). Для них сверяем ещё
+# числа и римские цифры — иначе в игре «+0.1 Attack Speed» вместо «+0.2».
+STRICT_NS = {"armageddon_mod"}
+ROMAN = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"}
+
+
+def content_signature(text: str) -> tuple:
+    """placeholder_signature + числа и римские цифры (для съехавших переводов)."""
+    plain = re.sub(r"§[0-9a-fk-or]", "", text)
+    # 7,5 и 7.5 — одно и то же число, просто разный разделитель
+    nums = sorted(n.replace(",", ".") for n in re.findall(r"\d+(?:[.,]\d+)?", plain))
+    words = (w.strip(".,;:!?()[]{}\"'") for w in plain.split())
+    roman = sorted(w for w in words if w in ROMAN)
+    return placeholder_signature(text) + (tuple(nums), tuple(roman))
+
+
+
 def build_lang_files(out: Path, translations: dict[str, str]) -> tuple[int, int]:
     """Пишет assets/<ns>/lang/ru_ru.json.
 
@@ -150,14 +168,22 @@ def build_lang_files(out: Path, translations: dict[str, str]) -> tuple[int, int]
                 continue
             # у мода есть собственный перевод — обычно не трогаем его.
             # Исключения: битые %-аргументы, английский текст вместо перевода.
-            if placeholder_signature(cur)[0] != placeholder_signature(val)[0]:
-                # чужой перевод потерял или испортил %-аргументы / §-коды:
-                # в игре это «%с» вместо значения. Чиним своим переводом,
-                # а если его нет — откатываемся на английский.
-                if ru and ru.strip() and placeholder_signature(ru)[0] == placeholder_signature(val)[0]:
-                    merged[key] = ru
-                else:
-                    merged[key] = val
+            sig_en = content_signature(val)
+            sig_ru = content_signature(cur)
+            # %-аргументы сверяем всегда (без них в игре «%с» вместо значения).
+            # §-коды, числа и римские цифры — только там, где перевод мода
+            # съехал по ключам: в остальных модах перевод вправе менять разметку.
+            broken = sig_ru[0] != sig_en[0]
+            shifted = ns in STRICT_NS and sig_ru != sig_en
+            if broken or shifted:
+                if ru and ru.strip():
+                    sig_our = content_signature(ru)
+                    match = (sig_our == sig_en) if ns in STRICT_NS else (sig_our[0] == sig_en[0])
+                    if match:
+                        merged[key] = ru
+                        changed += 1
+                        continue
+                merged[key] = val
                 changed += 1
                 continue
             if ru and ru.strip() and not CYR.search(cur) and CYR.search(ru):
