@@ -136,6 +136,13 @@ def build_lang_files(out: Path, translations: dict[str, str]) -> tuple[int, int]
         vanilla_ru = json.loads(vpath.read_text(encoding="utf-8"))
         print(f"ванильный ru_ru: {len(vanilla_ru)} ключей")
 
+    # оверрайды по ключу: {"<ns>": {"<key>": "<русский текст>"}}
+    key_overrides = {}
+    opath = WORK / "key_overrides.json"
+    if opath.exists():
+        key_overrides = json.loads(opath.read_text(encoding="utf-8"))
+        print(f"точечных правок по ключу: {sum(len(v) for v in key_overrides.values())}")
+
     for ns, en in en_by_ns.items():
         existing = ru_by_ns.get(ns, {})
         # объединённый файл: чужие переводы сохраняем, наши — поверх
@@ -205,6 +212,13 @@ def build_lang_files(out: Path, translations: dict[str, str]) -> tuple[int, int]
             if base != merged:
                 changed += len(base) - len(merged)
             merged = base
+        # Точечные правки по ключу — ПОСЛЕ основного цикла: они нужны там,
+        # где мод сам приложил ru_ru, но часть строк оставил английскими,
+        # а ключа нет в en_us.json (словарём по тексту такую не достать).
+        for key, ru in key_overrides.get(ns, {}).items():
+            if merged.get(key) != ru:
+                merged[key] = ru
+                changed += 1
         if not changed:
             continue
         path = out / "assets" / ns / "lang" / "ru_ru.json"
