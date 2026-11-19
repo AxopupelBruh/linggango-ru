@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import shutil
 import subprocess
+import tempfile
 import sys
 from pathlib import Path
 
@@ -35,9 +36,14 @@ FILES = [
     (ROOT / "kubejs/client_scripts/ru_tooltip_translator.js",
      "install/kubejs/client_scripts/ru_tooltip_translator.js"),
     (ROOT / "mods/zz_linggango_ru_books.jar", "install/mods/zz_linggango_ru_books.jar"),
-    (ROOT / "ГАЙД_ЛОКАЛИЗАЦИИ.md", "docs/ГАЙД_ЛОКАЛИЗАЦИИ.md"),
-    (ROOT / "LINGGANGO_TRANSLATION_PLAN.md", "docs/ПЛАН_ПЕРЕВОДА.md"),
+    (ROOT / "ГАЙД_ЛОКАЛИЗАЦИИ.md", "docs/LOCALIZATION_GUIDE.md"),
+    (ROOT / "LINGGANGO_TRANSLATION_PLAN.md", "docs/TRANSLATION_PLAN.md"),
+    (HERE / "release/README.md", "README.md"),
+    (HERE / "release/gitignore", ".gitignore"),
 ]
+
+# системный промт переводчика — лежит в общей папке гайдов
+PROMPT_SRC = Path("/home/ax/Documents/Opencode/Для сборок переводов/ПРОМТ_СИСТЕМНЫЙ_EN_RU.txt")
 
 DIRS = [
     (ROOT / "datapacks/zz_linggango_ru_books", "install/datapacks/zz_linggango_ru_books"),
@@ -56,8 +62,8 @@ DICTS = [
 TOOL_SKIP = {"generated_ru_tooltip_translator.js"}
 
 
-def copy(src: Path, rel: str) -> int:
-    dst = STAGE / rel
+def copy(src: Path, rel: str, base: Path) -> int:
+    dst = base / rel
     dst.parent.mkdir(parents=True, exist_ok=True)
     if src.is_dir():
         if dst.exists():
@@ -69,28 +75,54 @@ def copy(src: Path, rel: str) -> int:
 
 
 def build() -> None:
-    if STAGE.exists():
-        shutil.rmtree(STAGE)
-    STAGE.mkdir(parents=True)
+    # собираем во временную папку, чтобы не снести .git в STAGE
+    tmp = Path(tempfile.mkdtemp(prefix="linggango-rel-"))
+    try:
+        _build_into(tmp)
+        if STAGE.exists():
+            for child in STAGE.iterdir():
+                if child.name == ".git":
+                    continue
+                if child.is_dir():
+                    shutil.rmtree(child)
+                else:
+                    child.unlink()
+        else:
+            STAGE.mkdir(parents=True)
+        for child in tmp.iterdir():
+            dst = STAGE / child.name
+            if child.is_dir():
+                shutil.copytree(child, dst)
+            else:
+                shutil.copy2(child, dst)
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def _build_into(stage: Path) -> None:
+    stage.mkdir(parents=True, exist_ok=True)
     n = 0
     for src, rel in FILES:
         if not src.exists():
             print(f"  НЕТ {src}")
             continue
-        n += copy(src, rel)
+        n += copy(src, rel, stage)
         print(f"  {rel}")
     for src, rel in DIRS:
         if not src.exists():
             print(f"  НЕТ {src}")
             continue
-        n += copy(src, rel)
-        print(f"  {rel}/ ({sum(1 for _ in (STAGE/rel).rglob('*') if _.is_file())} файлов)")
+        n += copy(src, rel, stage)
+        print(f"  {rel}/ ({sum(1 for _ in (stage/rel).rglob('*') if _.is_file())} файлов)")
     for d in DICTS:
         p = HERE / "work" / d
         if p.exists():
-            n += copy(p, f"data/{d}")
+            n += copy(p, f"data/{d}", stage)
             print(f"  data/{d}")
-    tools_dir = STAGE / "tools"
+    if PROMPT_SRC.exists():
+        n += copy(PROMPT_SRC, "docs/SYSTEM_PROMPT_EN_RU.txt", stage)
+        print("  docs/SYSTEM_PROMPT_EN_RU.txt")
+    tools_dir = stage / "tools"
     tools_dir.mkdir(parents=True, exist_ok=True)
     for p in sorted(HERE.glob("*.py")):
         if p.name.startswith("_"):
@@ -106,7 +138,7 @@ def build() -> None:
     print(f"\nвсего файлов: {n}")
 
     # проверка на секреты
-    bad = [p for p in STAGE.rglob("*") if p.is_file() and (
+    bad = [p for p in stage.rglob("*") if p.is_file() and (
         "key" in p.name.lower() or p.suffix in (".env", ".pem"))]
     if bad:
         raise SystemExit(f"ВНИМАНИЕ: в релизе есть подозрительные файлы: {bad}")
