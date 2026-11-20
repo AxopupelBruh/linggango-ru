@@ -49,6 +49,30 @@
   "item.born_in_chaos_v1.dark_ritual_dagger.description_1": "§8-Продлевает и усиливает получаемые от жертвоприношения эффекты"
  },
  "brutality": {
+  "attribute.modifier.equals.0": "%2$s: %1$s",
+  "attribute.modifier.equals.1": "%2$s: %1$s%% от базы",
+  "attribute.modifier.equals.2": "%2$s: %1$s%%",
+  "attribute.modifier.plus.1": "%2$s: +%1$s%% от базы",
+  "attribute.modifier.plus.2": "%2$s: +%1$s%%",
+  "attribute.modifier.take.1": "%2$s: -%1$s%% от базы",
+  "attribute.modifier.take.2": "%2$s: -%1$s%%",
+  "brutality.cosmic_seal": "Космическая печать",
+  "brutality.description.type.on_left_clicking_entity": "§6При ударе левой кнопкой по существу:",
+  "brutality.description.type.on_right_click": "§6При нажатии ПКМ:",
+  "brutality.description.type.on_shoot": "§6При выстреле:",
+  "brutality.description.type.on_swing": "§6При взмахе:",
+  "effect.brutality.glazed": "Глазированный",
+  "effect.brutality.grace": "Благодать",
+  "effect.brutality.hot_and_spicy": "Остро и пряно",
+  "effect.brutality.mashed": "§4Пюре",
+  "item.brutality.cosmic_seal": "Космическая печать",
+  "item.brutality.frying_pan.on_hit.1": "§e - Накладывает §4Пюре II§e на 3 секунды",
+  "item.brutality.potato_masher": "Картофелемялка",
+  "item.brutality.potato_masher.on_hit.1": "§e - Накладывает §4Пюре III§e на 5 секунд",
+  "item.brutality.spatula.on_hit.2": "§e - Накладывает §4Пюре I§e на 3 секунды",
+  "item.brutality.the_golden_spatula.on_hit.2": "§e - Накладывает §4Пюре II§e на 5 секунд",
+  "item.brutality.whisk.on_hit.1": "§e - Накладывает §4Пюре I§e на 10 секунд",
+  "key.categories.brutality": "Brutality",
   "rarity.cataclysmic.name": "Cataclysmic",
   "rarity.dark.name": "Everdark",
   "rarity.divine.name": "Divine",
@@ -61,7 +85,12 @@
   "rarity.mythic.name": "Mythic",
   "rarity.nocturnal.name": "Nocturnal",
   "rarity.prismatic.name": "Prismatic",
-  "rarity.stygian.name": "Stygian"
+  "rarity.stygian.name": "Stygian",
+  "spell.brutality.annihilation.description.1": "§8Призывает копья звездой вокруг заклинателя. Копья накладывают §cПроклятие§8 и могут взорваться при контакте.",
+  "spell.brutality.dematerialize.description.1": "§8Удаляет выбранного моба, только если его§r ❤§9 Здоровье§e ниже порога (уничтожает весь дроп)",
+  "spell.brutality.light_binding": "Светлые оковы",
+  "spell.brutality.moonlit_mending": "Лунное исцеление",
+  "spell.brutality.singularity_shift.description.1": "§8Бросьте звезду, которая при ударе создаёт поле усиленной гравитации. Направление гравитации можно сменить, присев"
  },
  "cataclysm": {
   "entity.cataclysm.ancient_ancient_remnant": "Древний Ревенант"
@@ -81,6 +110,7 @@
   "commands.endinglib.message.pose.name.spin_attack": "§aSpinAttack"
  },
  "enigmaticaddons": {
+  "tooltip.enigmaticaddons.attack_speed": "§6%1$s§d скорости атаки",
   "tooltip.enigmaticaddons.extradimensionalScepterInfo_alt": "§5Сохраняемое в данный момент существо: §6%1$s§6(%2$s§6)",
   "tooltip.enigmaticaddons.thunderScroll2": "§5Ваши атаки наносят больше урона §dбронированным §5целям."
  },

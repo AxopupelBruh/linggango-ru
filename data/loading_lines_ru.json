@@ -1,0 +1,454 @@
+[
+ [
+  "[boot]",
+  "[boot]"
+ ],
+ [
+  "Waking up the mods",
+  "Будим моды"
+ ],
+ [
+  "Counting every mod twice",
+  "Пересчитываем каждый мод дважды"
+ ],
+ [
+  "Polishing the keepers' armour",
+  "Начищаем броню хранителей"
+ ],
+ [
+  "Teaching zombies to walk",
+  "Учим зомби ходить"
+ ],
+ [
+  "Untangling mixins",
+  "Распутываем миксины"
+ ],
+ [
+  "Feeding the gnomes",
+  "Кормим гномов"
+ ],
+ [
+  "Sharpening a thousand swords",
+  "Точим тысячу мечей"
+ ],
+ [
+  "Asking Java for more memory",
+  "Просим у Java побольше памяти"
+ ],
+ [
+  "Rolling loot tables",
+  "Бросаем таблицы добычи"
+ ],
+ [
+  "Stacking recipes very carefully",
+  "Очень аккуратно складываем рецепты"
+ ],
+ [
+  "Brewing the potion of patience",
+  "Варим зелье терпения"
+ ],
+ [
+  "Convincing the dragon to wait",
+  "Уговариваем дракона подождать"
+ ],
+ [
+  "Ironing the capes",
+  "Гладим плащи"
+ ],
+ [
+  "Warming up the furnaces",
+  "Разогреваем печи"
+ ],
+ [
+  "Hiding the good loot",
+  "Прячем хорошую добычу"
+ ],
+ [
+  "[world_waiting]",
+  "[world_waiting]"
+ ],
+ [
+  "Waking up the world",
+  "Будим мир"
+ ],
+ [
+  "Finding the save file",
+  "Ищем файл сохранения"
+ ],
+ [
+  "Dusting off the chunks",
+  "Смахиваем пыль с чанков"
+ ],
+ [
+  "Looking for where you left off",
+  "Ищем, где вы остановились"
+ ],
+ [
+  "[reserve]",
+  "[reserve]"
+ ],
+ [
+  "Drawing the map borders",
+  "Чертим границы карты"
+ ],
+ [
+  "Picking a spot for spawn",
+  "Выбираем место для точки возрождения"
+ ],
+ [
+  "Reserving land for later",
+  "Приберегаем землю на потом"
+ ],
+ [
+  "Rolling the world seed",
+  "Бросаем сид мира"
+ ],
+ [
+  "[structures]",
+  "[structures]"
+ ],
+ [
+  "Hiding dungeons",
+  "Прячем подземелья"
+ ],
+ [
+  "Burying treasure",
+  "Закапываем сокровища"
+ ],
+ [
+  "Building villages nobody asked for",
+  "Строим деревни, которых никто не просил"
+ ],
+ [
+  "Hiding the keepers",
+  "Прячем хранителей"
+ ],
+ [
+  "Drawing up the blueprints",
+  "Чертим чертежи"
+ ],
+ [
+  "Placing ruins where they hurt most",
+  "Ставим руины туда, где больнее всего"
+ ],
+ [
+  "Losing the stronghold on purpose",
+  "Специально теряем крепость"
+ ],
+ [
+  "[biomes]",
+  "[biomes]"
+ ],
+ [
+  "Painting biomes",
+  "Раскрашиваем биомы"
+ ],
+ [
+  "Choosing the weather",
+  "Выбираем погоду"
+ ],
+ [
+  "Picking a colour for the grass",
+  "Подбираем цвет траве"
+ ],
+ [
+  "Sorting deserts from jungles",
+  "Отделяем пустыни от джунглей"
+ ],
+ [
+  "Giving every hill a name",
+  "Даём каждому холму имя"
+ ],
+ [
+  "[terrain]",
+  "[terrain]"
+ ],
+ [
+  "Raising mountains",
+  "Поднимаем горы"
+ ],
+ [
+  "Digging out the oceans",
+  "Выкапываем океаны"
+ ],
+ [
+  "Piling up stone",
+  "Наваливаем камень"
+ ],
+ [
+  "Flattening the plains a little",
+  "Немного выравниваем равнины"
+ ],
+ [
+  "Making cliffs taller than they need to be",
+  "Делаем скалы выше, чем нужно"
+ ],
+ [
+  "Pouring the bedrock",
+  "Заливаем бедрок"
+ ],
+ [
+  "[surface]",
+  "[surface]"
+ ],
+ [
+  "Laying down grass",
+  "Стелим траву"
+ ],
+ [
+  "Spreading sand on the beaches",
+  "Разбрасываем песок по пляжам"
+ ],
+ [
+  "Dusting the peaks with snow",
+  "Припудриваем вершины снегом"
+ ],
+ [
+  "Rolling out the topsoil",
+  "Раскатываем верхний слой почвы"
+ ],
+ [
+  "[caves]",
+  "[caves]"
+ ],
+ [
+  "Carving caves",
+  "Вырезаем пещеры"
+ ],
+ [
+  "Digging tunnels",
+  "Роем туннели"
+ ],
+ [
+  "Hollowing out the deep dark",
+  "Выдалбливаем Глубокую Тьму"
+ ],
+ [
+  "Leaving gaps to fall into",
+  "Оставляем дыры, куда можно провалиться"
+ ],
+ [
+  "[features]",
+  "[features]"
+ ],
+ [
+  "Growing trees",
+  "Растим деревья"
+ ],
+ [
+  "Planting flowers",
+  "Сажаем цветы"
+ ],
+ [
+  "Scattering ores",
+  "Рассыпаем руды"
+ ],
+ [
+  "Adding small touches",
+  "Добавляем мелкие штрихи"
+ ],
+ [
+  "Placing pumpkins",
+  "Расставляем тыквы"
+ ],
+ [
+  "Watering the mushrooms",
+  "Поливаем грибы"
+ ],
+ [
+  "Hanging vines",
+  "Развешиваем лианы"
+ ],
+ [
+  "Hiding diamonds very deep",
+  "Прячем алмазы очень глубоко"
+ ],
+ [
+  "[light]",
+  "[light]"
+ ],
+ [
+  "Lighting the world",
+  "Освещаем мир"
+ ],
+ [
+  "Hanging up the sun",
+  "Вешаем солнце"
+ ],
+ [
+  "Checking where shadows go",
+  "Проверяем, куда падают тени"
+ ],
+ [
+  "Dimming the caves",
+  "Приглушаем свет в пещерах"
+ ],
+ [
+  "[mobs]",
+  "[mobs]"
+ ],
+ [
+  "Spawning animals",
+  "Спавним животных"
+ ],
+ [
+  "Waking up the monsters",
+  "Будим монстров"
+ ],
+ [
+  "Telling the creepers where you live",
+  "Рассказываем криперам, где вы живёте"
+ ],
+ [
+  "Putting cows in fields",
+  "Ставим коров на поля"
+ ],
+ [
+  "[ready]",
+  "[ready]"
+ ],
+ [
+  "Settling in",
+  "Устраиваемся"
+ ],
+ [
+  "Almost there",
+  "Почти на месте"
+ ],
+ [
+  "Unpacking your bags",
+  "Распаковываем вещи"
+ ],
+ [
+  "[join]",
+  "[join]"
+ ],
+ [
+  "Knocking on the server's door",
+  "Стучимся в дверь сервера"
+ ],
+ [
+  "Shaking hands with the server",
+  "Здороваемся с сервером за руку"
+ ],
+ [
+  "Checking your boots for mud",
+  "Проверяем, не налипли ли на ботинки грязь"
+ ],
+ [
+  "Asking nicely to come in",
+  "Вежливо просим пустить внутрь"
+ ],
+ [
+  "Finding your old spot",
+  "Ищем ваше старое место"
+ ],
+ [
+  "[terrain_load]",
+  "[terrain_load]"
+ ],
+ [
+  "Loading the terrain",
+  "Загружаем рельеф"
+ ],
+ [
+  "Laying out the land",
+  "Раскладываем землю"
+ ],
+ [
+  "Catching up on chunks",
+  "Догоняем чанки"
+ ],
+ [
+  "Placing the scenery back",
+  "Возвращаем декорации на место"
+ ],
+ [
+  "[nether]",
+  "[nether]"
+ ],
+ [
+  "Turning up the heat",
+  "Прибавляем жару"
+ ],
+ [
+  "Pouring lava",
+  "Заливаем лаву"
+ ],
+ [
+  "Warming the netherrack",
+  "Разогреваем адский камень"
+ ],
+ [
+  "Hiding the fortress again",
+  "Снова прячем крепость"
+ ],
+ [
+  "Waking the ghasts",
+  "Будим гастов"
+ ],
+ [
+  "[end]",
+  "[end]"
+ ],
+ [
+  "Floating the islands",
+  "Подвешиваем острова"
+ ],
+ [
+  "Waking the Ender Dragon",
+  "Будим Дракона Края"
+ ],
+ [
+  "Stacking obsidian towers",
+  "Ставим обсидиановые башни"
+ ],
+ [
+  "Turning off the sky",
+  "Выключаем небо"
+ ],
+ [
+  "[dimension]",
+  "[dimension]"
+ ],
+ [
+  "Opening the portal",
+  "Открываем портал"
+ ],
+ [
+  "Crossing over",
+  "Переходим на ту сторону"
+ ],
+ [
+  "Bending reality a little",
+  "Немного искривляем реальность"
+ ],
+ [
+  "Stepping somewhere else",
+  "Шагаем куда-то ещё"
+ ],
+ [
+  "[leave]",
+  "[leave]"
+ ],
+ [
+  "Saving the world",
+  "Сохраняем мир"
+ ],
+ [
+  "Tucking the world in",
+  "Укладываем мир спать"
+ ],
+ [
+  "Writing everything down",
+  "Записываем всё"
+ ],
+ [
+  "Putting the chunks to bed",
+  "Отправляем чанки в постель"
+ ],
+ [
+  "Closing the doors behind you",
+  "Закрываем за вами двери"
+ ]
+]

@@ -413,6 +413,131 @@ def write_pack_mcmeta(out: Path) -> None:
     }, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
+# ─────────────────────── шрифт: иконки модов ────────────────────────────────
+#
+# Проблема: assets/minecraft/font/default.json — ОДИН файл на весь стек паков.
+# Кто выше в списке, тот и победил: его файл заменяет модовые целиком.
+# В сборке выше mod_resources стоит §6§lVanilla Experience+§0.zip, поэтому
+# 61 иконка brutality (и иконки simplyswords/bbb) в игре превращалась в
+# квадраты — их провайдеров в итоговом файле просто не было.
+#
+# Решение: наш пак идёт последним, значит его default.json и есть итоговый.
+# Собираем в него провайдеры ВСЕХ модов и всех ВКЛЮЧЁННЫХ ресурспаков.
+# Ссылки на include/* оставляем — без них пропадут пробелы и unifont.
+
+DEFAULT_FONT = "assets/minecraft/font/default.json"
+FONT_REFS = [
+    {"type": "reference", "id": "minecraft:include/space"},
+    {"type": "reference", "id": "minecraft:include/default"},
+    {"type": "reference", "id": "minecraft:include/unifont"},
+]
+
+
+def _enabled_packs() -> list[str]:
+    """Какие ресурспаки включены в options.txt (по именам файлов)."""
+    opts = ROOT / "options.txt"
+    if not opts.exists():
+        return []
+    m = re.search(r"resourcePacks:\[(.*?)\]", opts.read_text(encoding="utf-8"), flags=re.S)
+    if not m:
+        return []
+    out = []
+    for item in m.group(1).split(","):
+        item = item.strip().strip('"')
+        if item.startswith("file/"):
+            out.append(item[5:])
+    return out
+
+
+def build_default_font(out: Path) -> int:
+    """Кладёт в пак объединённый default.json со всеми иконками.
+
+    Возвращает число добавленных bitmap-провайдеров.
+    """
+    providers: list[dict] = []
+    seen_chars: set[str] = set()
+
+    def add_from(path: Path) -> None:
+        try:
+            z = zipfile.ZipFile(path)
+        except Exception:
+            return
+        if DEFAULT_FONT not in z.namelist():
+            return
+        try:
+            data = json.loads(z.read(DEFAULT_FONT))
+        except Exception:
+            return
+        for prov in data.get("providers", []):
+            if prov.get("type") != "bitmap":
+                continue
+            chars = prov.get("chars")
+            chars = "".join(chars) if isinstance(chars, list) else chars
+            if not chars or any(c in seen_chars for c in chars):
+                continue
+            seen_chars.update(chars)
+            providers.append(prov)
+
+    # 1) ресурспаки (только включённые — иначе будут битые ссылки на текстуры)
+    enabled = _enabled_packs()
+    packdir = ROOT / "resourcepacks"
+    if packdir.is_dir():
+        for f in sorted(packdir.glob("*.zip")):
+            if f.name in enabled:
+                add_from(f)
+
+    # 2) моды
+    for jar in sorted(MODS.glob("*.jar")):
+        add_from(jar)
+
+    if not providers:
+        return 0
+
+    payload = {"providers": providers + FONT_REFS}
+    target = out / DEFAULT_FONT
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
+    return len(providers)
+
+
+# ─────────────────── подсказки и строки экрана загрузки ─────────────────────
+#
+# linggango_tweaks берёт их из assets/linggango_tweaks/texts/*.txt через
+# ResourceManager (LoadingLines.text/FILE), а не из lang-файлов. Значит наш
+# ресурспак может подложить свои — они заменят модовые целиком, как и lang.
+
+TEXTS = [
+    ("loading_tips.txt", "loading_tips", "строк"),
+    ("loading_lines.txt", "loading_lines", "пар"),
+]
+
+
+def build_texts(out: Path) -> int:
+    """Кладёт перевод texts/*.txt. Возвращает число переведённых строк."""
+    total = 0
+    for fname, stem, unit in TEXTS:
+        ru_path = WORK / f"{stem}_ru.json"
+        if not ru_path.exists():
+            continue
+        data = json.loads(ru_path.read_text(encoding="utf-8"))
+        if stem == "loading_tips":
+            lines = [str(x) for x in data]
+        else:
+            pairs = [p for p in data if isinstance(p, list) and len(p) == 2]
+            en_path = WORK / f"{stem}_en.json"
+            if not en_path.exists():
+                continue
+            en = json.loads(en_path.read_text(encoding="utf-8"))
+            table = {k: v for k, v in pairs}
+            lines = [table.get(line, line) for line in en]
+        target = out / "assets" / "linggango_tweaks" / "texts" / fname
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        total += len([l for l in lines if l.strip()])
+        print(f"  texts/{fname}: {len(lines)} {unit}")
+    return total
+
+
 def zip_pack(folder: Path, zip_path: Path) -> None:
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
         for f in sorted(folder.rglob("*")):
@@ -452,6 +577,14 @@ def main():
     print(f"книг: {books}, переведённых полей: {fields}, меток ссылок: {len(labels)}")
 
     write_pack_mcmeta(stage)
+
+    # Иконки шрифтов: наш пак последний, поэтому его default.json — итоговый.
+    # Без этого иконки brutality/simplyswords/bbb в игре — квадраты.
+    font_providers = build_default_font(stage)
+    print(f"иконок в шрифте: {font_providers} провайдеров")
+
+    tip_lines = build_texts(stage)
+    print(f"строк экрана загрузки: {tip_lines}")
 
     # Дополнительные ключи, которых нет ни в одном моде (картины без lang,
     # «сырые» rarity.*, зачарования без перевода). Кладём в отдельный

@@ -43,6 +43,8 @@ FILES = [
      "install/kubejs/client_scripts/ru_tooltip_translator.js"),
     (ROOT / "kubejs/client_scripts/ars-nouveau-ponders.js",
      "install/kubejs/client_scripts/ars-nouveau-ponders.js"),
+    (ROOT / "kubejs/client_scripts/tooltip_additions.js",
+     "install/kubejs/client_scripts/tooltip_additions.js"),
     (ROOT / "kubejs/server_scripts/ru_measure_of_stone.js",
      "install/kubejs/server_scripts/ru_measure_of_stone.js"),
     (ROOT / "mods/zz_linggango_ru_books.jar", "install/mods/zz_linggango_ru_books.jar"),
@@ -63,7 +65,8 @@ DICTS = [
     "pack_script_ru.json", "terms_merged.json", "vanilla_ru_ru.json",
     "extra_ru.json", "runtime_missing_ru.json", "runtime_manual_ru.json",
     "ui_strings_manual_ru.json", "key_overrides.json", "stale_fix_ru.json",
-    "polish_fix_ru.json",
+    "polish_fix_ru.json", "loading_tips_ru.json", "loading_lines_ru.json",
+    "loading_tips_en.json", "loading_lines_en.json",
 ]
 
 # скрипты: в релиз идут только рабочие, без одноразовых правок.
