@@ -380,6 +380,58 @@ class DeepSeekBackend:
             raise RuntimeError(f"deepseek: ожидалось {n} строк, получено {got}")
         return [str(x) for x in data]
 
+    def _request_raw(self, prompt: str) -> str:
+        """Отправляет произвольный промпт, возвращает сырой текст ответа.
+
+        Нужен там, где формат ответа свой (например, переписать строку
+        единообразно по обращению), а не список переводов.
+        """
+        body = {
+            "model": self.model,
+            "messages": [
+                {"role": "system", "content": SYSTEM_RULES},
+                {"role": "user", "content": prompt},
+            ],
+            "temperature": self.temperature,
+            "max_tokens": 8192,
+            "stream": False,
+        }
+        if not self.thinking:
+            body["thinking"] = {"type": "disabled"}
+        last = ""
+        for attempt in range(6):
+            try:
+                self._throttle()
+                r = self.session.post(self.base_url + "/chat/completions",
+                                      json=body, timeout=300)
+                self.calls += 1
+                if r.status_code == 200:
+                    msg = r.json()["choices"][0]["message"]
+                    text = msg.get("content") or ""
+                    if not text.strip():
+                        raise RuntimeError("deepseek: пустой content")
+                    self.input_chars += len(prompt)
+                    self.output_chars += len(text)
+                    return text
+                last = f"HTTP {r.status_code}: {r.text[:300]}"
+                if r.status_code in (400, 401, 403, 404):
+                    raise RuntimeError(f"deepseek: {last}")
+                if r.status_code in (429, 500, 502, 503, 504, 520, 521, 522, 523, 524):
+                    time.sleep(min(60, 8 * (attempt + 1)) + random.uniform(0, 3))
+                    continue
+                raise RuntimeError(f"deepseek: {last}")
+            except RuntimeError as exc:
+                last = str(exc)
+                if attempt == 5:
+                    raise
+                time.sleep(5 * (attempt + 1))
+            except Exception as exc:  # noqa: BLE001
+                last = str(exc)
+                if attempt == 5:
+                    raise RuntimeError(f"deepseek: {last}") from exc
+                time.sleep(5 * (attempt + 1))
+        raise RuntimeError(f"deepseek: {last}")
+
     def translate_batch_hinted(self, items: list[dict]) -> list[str]:
         """items: [{"en": str, "terms": {EN: RU}}, ...] -> список переводов."""
         if not items:

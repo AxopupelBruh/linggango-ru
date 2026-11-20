@@ -1,0 +1,313 @@
+{
+ "ad_astra": {
+  "info.ad_astra.fluid_pipe": "Передаёт жидкости. ПКМ с ключом в руке, чтобы сменить режим распределения."
+ },
+ "ae2": {
+  "gui.ae2.CreativeTabFacades": "Applied Energistics 2 — Фасады"
+ },
+ "alexsmobs": {
+  "advancements.alexsmobs.crimson_mosquito_sick.title": "Эта болезнь доведёт нас!"
+ },
+ "animus": {
+  "block.animus.antilife": "Антижизнь",
+  "fluid.animus.antilife": "Антижизнь",
+  "guide.animus.entry.antilife": "Антижизнь",
+  "item.animus.antilife_bucket": "Ведро антижизни",
+  "jei.animus.antilife_block.info": "Создаётся Символом Потребления или когда жидкость антижизни касается твёрдых блоков. Распространяется так же, как вода, и уничтожает всё на своём пути.",
+  "text.component.animus.ticket.antilife": "Антижизнь"
+ },
+ "armageddon_mod": {
+  "item.armageddon_mod.fork_of_lamentations.description_7": " §7Может вскоре взорваться на цели §9(25% шанс)"
+ },
+ "ars_nouveau": {
+  "ars_nouveau.page1.spell_mana": "Мана для заклинаний используется для каста заклинаний с помощью $(thing)Книги заклинаний$(). Максимальное количество маны и скорость, с которой она восстанавливается, можно увеличить, надев специальные $(item)Магические Доспехи$() или применив зачарования $(item)Усиления Маны$() или $(item)Восстановления Маны$() на вашем снаряжении. Кроме того, вы будете получать дополнительную ману и восстановление за каждый разблокированный глиф в вашей книге заклинаний."
+ },
+ "asyncparticles": {
+  "config.asyncparticles.particle.particleLimit.tooltip": "Установите максимальное количество частиц на\nтип отрисовки частиц."
+ },
+ "bbb": {
+  "block.bbb.acacia_beam_slab": "Плита из акациевых балок",
+  "block.bbb.crimson_beam": "Багровая балка",
+  "block.bbb.crimson_wall": "Багровая стена",
+  "block.bbb.dark_oak_beam_slab": "Плита из балок тёмного дуба",
+  "block.bbb.jungle_beam_slab": "Плита из тропических балок",
+  "block.bbb.mud_brick_layer": "Слой саманных кирпичей",
+  "block.bbb.purpur_layer": "Слой пурпура",
+  "block.bbb.smooth_sandstone_layer": "Слой гладкого песчаника",
+  "block.bbb.smooth_stone_layer": "Слой гладкого камня"
+ },
+ "biomeswevegone": {
+  "advancements.biomeswevegone.adventure.oh_the_biomes_weve_gone.title": "Ах, эти биомы, в которых мы побывали",
+  "advancements.biomeswevegone.title.root": "Ах, эти биомы, в которых мы побывали"
+ },
+ "block_factorys_bosses": {
+  "block.block_factorys_bosses.corpse.description_0": "§7Имеет 3 случайных варианта"
+ },
+ "born_in_chaos_v1": {
+  "block.born_in_chaos_v1.tombstone_fubuki_banzai.description_1й": "§8Холодная рука судьбы сжимается, невидимая—",
+  "item.born_in_chaos_v1.corpse_fish_spawn_egg": "Яйцо призыва трупной рыбы ",
+  "item.born_in_chaos_v1.dark_ritual_dagger.description_1": "§8-Продлевает и усиливает получаемые от жертвоприношения эффекты"
+ },
+ "brutality": {
+  "rarity.cataclysmic.name": "Cataclysmic",
+  "rarity.dark.name": "Everdark",
+  "rarity.divine.name": "Divine",
+  "rarity.fabled.name": "Fabled",
+  "rarity.fire.name": "Smoldering",
+  "rarity.glacial.name": "Glacial",
+  "rarity.gloomy.name": "Gloomy",
+  "rarity.godly.name": "Godly",
+  "rarity.legendary.name": "Legendary",
+  "rarity.mythic.name": "Mythic",
+  "rarity.nocturnal.name": "Nocturnal",
+  "rarity.prismatic.name": "Prismatic",
+  "rarity.stygian.name": "Stygian"
+ },
+ "cataclysm": {
+  "entity.cataclysm.ancient_ancient_remnant": "Древний Ревенант"
+ },
+ "createaddition": {
+  "block.createaddition.accumulator.tooltip.behaviour1": "Отдает _FE_ _проводам_, подключенным к _коннектору_, отмеченному стрелкой вверх.",
+  "block.createaddition.redstone_relay.tooltip.behaviour2": "Отдает _FE_ _проводам_, подключенным к _коннектору_, отмеченному стрелкой вверх."
+ },
+ "domesticationinnovation": {
+  "enchantment.domesticationinnovation.deflection.desc": "Питомец защищён от снарядов призрачным щитом"
+ },
+ "dungeonsdelight": {
+  "dungeonsdelight.jei.sculking.spawner": "Процесс ускоряется за счёт прилегающих нагревающих элементов, созданных из порченых обломков (см. ниже)"
+ },
+ "ending_library": {
+  "commands.endinglib.message.ability.mayfly": "§aMayFly",
+  "commands.endinglib.message.pose.name.spin_attack": "§aSpinAttack"
+ },
+ "enigmaticaddons": {
+  "tooltip.enigmaticaddons.extradimensionalScepterInfo_alt": "§5Сохраняемое в данный момент существо: §6%1$s§6(%2$s§6)",
+  "tooltip.enigmaticaddons.thunderScroll2": "§5Ваши атаки наносят больше урона §dбронированным §5целям."
+ },
+ "enigmaticlegacy": {
+  "book.enigmaticlegacy.entry.berserk_charm.page.1": "Неудивительно, что многие боятся смерти, потому что смерть находится в центре паутины всех ужасов. Но для тех, кто решил нести великое проклятие, страх - непростительная слабость. С помощью силы Искажённого сердца, а также всех семи проклятий вместе взятых, вы можете выковать эту эмблему. Это поможет вам перевернуть ситуацию в вашу пользу - чем ближе вы будете стоять к краю",
+  "book.enigmaticlegacy.entry.enigmatic_eye.page.3": "установить, что представляет собой и какова мотивация пристального слежения за каждым шагом.<br2/>Единственное, что можно сказать точно - не чужд миру, в котором вы сейчас находитесь, ни высшим существам, ни вам. Скорее всего, он сам когда-то странствовал по этим землям, но его влияние на прошлое пока остаётся загадкой... Как и то, где он находится сейчас, почему решил поговорить с вами и",
+  "book.enigmaticlegacy.entry.etherium_ore.page.3": "В настоящее время вы предполагаете, что они, возможно, преуспели в использовании огромного количества эндерических энергий и использовали их для воплощения этого минерала в физическую реальность, что и позволило его изготовить.<br2/>К сожалению, вы не можете быть уверены в том, как выглядели их методы, но должны ли вы видеть выводы их работ, возможно, появятся ещё какие-то ответы.",
+  "book.enigmaticlegacy.entry.heaven_scroll.page.1": "Как и любой другой полубог или человек, с самого начала своего путешествия ты мечтал выйти за пределы своего уязвимого тела. Эта мечта, помимо всего прочего, включала в себя свободное путешествие по небесам этого мира, как божество над всеми остальными.<br2/>Что ж, этот свиток, возможно, не позволит вам путешествовать по небесам.",
+  "book.enigmaticlegacy.entry.lamp.page.1": "Светокамень - хороший и надёжный источник света, однако вид его свисающих гроздьев не приносит большого удовольствия. Вместо того, чтобы использовать его в сыром виде, вам пришла идея создать нечто вроде обычной лампы, но больше и светлее.<br2/>Вы можете поставить её на пол, или же подвесить под потолком.",
+  "tooltip.enigmaticlegacy.abyssalHeart2_obf": "§5§kэто царство не содрогалось под пристальным взглядом",
+  "tooltip.enigmaticlegacy.cursedRing11": "§dСемеро благословений будут ниспосланы на того, кто выстоит:",
+  "tooltip.enigmaticlegacy.magnetRing2_alt": "§5Работает только при удержании §6Shift§5.",
+  "tooltip.enigmaticlegacy.superMagnetRing3_alt": "§5Работает только при удержании §6Shift§5."
+ },
+ "entity_model_features": {
+  "entity_model_features.config.physics.tooltip": "При смерти отрисует только части оригинальной ванильной модели, если включён physics mod\n работает частично и не является идеальным решением",
+  "entity_model_features.config.unknown_model_print_mode": "Выводить сведения о неизвестной модели",
+  "entity_model_features.config.unknown_model_print_mode.log": "Только в лог",
+  "entity_model_features.config.unknown_model_print_mode.log_jem": "Лог и файл .jem",
+  "entity_model_features.config.unknown_model_print_mode.tooltip": "выведет информацию или готовый файл .jem\n для любой неизвестной или модовой модели, к которой имеет доступ EMF\nВНИМАНИЕ: файлы .jem пока неидеальны, но дадут отправную точку",
+  "entity_model_features.config.update.tooltip": "Частота обновления моделей сущностей\nдля отображения изменений в их свойствах,\nтаких как здоровье или возраст.\n\n§r    §9Никогда §l  §r- обновления отключены\n§r   §aМедленно§l  §r- раз в 3-5 секунд\n§r  §l  §eСредне §r- раз в секунду\n§r  §l  §6Быстро §r- несколько раз в секунду\n§l  §cМгновенно §r- в реальном времени\n\n§c⚠§8 Чем больше сущностей, тем выше нагрузка.",
+  "entity_model_features.config.vanilla_render": "Режим отображения ванильной модели",
+  "entity_model_features.config.vanilla_render.tooltip": "пытается отрисовать ванильную модель рядом с кастомной для сравнения\n она не будет анимироваться и может встать немного странно",
+  "entity_model_features.title": "Функции моделей сущностей"
+ },
+ "entity_texture_features": {
+  "config.entity_features.hide_button.tooltip": "Не показывает эту кнопку настроек в меню наборов ресурсов",
+  "config.entity_texture_features.allow_illegal_texture_paths.tooltip": "Убрать встроенный в игру запрет на использование\nв путях текстур символов, отличных от [§7a-z0-9/._-§r].\nНапример, станет возможным использование путей с\nпробелами или заглавными буквами.\n\nОтключено по умолчанию - авторам наборов ресурсов\nстоит избегать их использования и заранее убирать\nподобные символы во избежание проблем с загрузкой.",
+  "config.entity_texture_features.always_check_vanilla_emissive_suffix.tooltip": "Отключить проверку нестандартных суффиксов.\nПодавляющее большинство наборов ресурсов\nиспользует суффикс \"§8_e§r\" несмотря на то, что\nвозможны и другие, поэтому не всегда есть\nсмысл их проверять.",
+  "config.entity_texture_features.animation_compatibility.tooltip": "ETF не будет вмешиваться в анимированные\nтекстуры сущностей.\n\n§6ℹ §7Пригодится при игре с MoreMcmeta.\n\n§c⚠ §8Это может привести к мерцанию текстур\n §8с некоторыми шейдерами.",
+  "config.entity_texture_features.blink_frequency.tooltip": "Общий разброс частоты мерцания текстур сущностей.\nПри значении §7§o200§r текстура будет меняться по схеме:\n§71 секнуда §7+ §7случайная задержка от §71 до §7§o200 §7тактов§r\n(200 тактов = 10 секунд).\n\n§6ℹ§7 Задержку §7можно §7настроить §7для §7каждой §7сущности\n§r §7отдельно, §7подробнее §7см. в руководстве на GitHub.",
+  "config.entity_texture_features.blink_length.tooltip": "Длительность отображения текстуры мерцания в\nдополнение к базовой (§71 такт§r). При значении §7§o19§r\n(§71 §7такт §7+ §7§o19§r) длительность составит §720 §7тактов§r\n(20 тактов = 1 секунда).\n\n§6ℹ§7 Длительность можно настроить для каждой\n§r §7сущности, §7подробнее §7см. §7в руководстве.",
+  "config.entity_texture_features.blinking_mob_settings.tooltip": "Включить мерцающие текстуры сущностей.\nТекстуры должны иметь копии для замены\n(например, с закрытыми глазами) в формате\n\"§8имя_текстуры_blink.png§r\".\n\n§6ℹ§7 Поддерживаются промежуточные текстуры\n§r §7в формате \"§8имя_текстуры_blink2.png§7\".",
+  "config.entity_texture_features.custom_block_entity.tooltip": "Включить поддержку пользовательских текстур\nдля блоков-сущностей с использованием формата\nOptifine и случайных текстур формата ETF.\n\n§c⚠§8 Несовместимо с Enhanced Block Entities.",
+  "config.entity_texture_features.disable_default_directory.tooltip": "По умолчанию случайные текстуры могут\nзагружаться из стандартных папок.\nЭто можно отключить и заставить игру\nиспользовать только папки Optifine и ETF.\n\n§6ℹ§7 Предназначено для совместимости с\n§r §7модами, §7которые §7зачем-то §7содержат\n§r §7текстуры по типу \"§8mob2.png§7\".",
+  "config.entity_texture_features.elytra_thickness_fix.tooltip": "Исправить неестественно растянутую в толщину\nмодель элитр. Их окантовка будет сжата до пра-\nвильных пропорций, чтобы сделать их внешний\nвид естественным и исправить §nMC-111506§r.\n\n§c⚠ §8Применение настройки требует перезагрузки\n §8ресурсов (F3+T) или всей игры.",
+  "config.entity_texture_features.emissive_mode.bright": "§eЯркий",
+  "config.entity_texture_features.emissive_mode.tooltip": "§6Обычный§r или §eЯркий §rрежим свечения текстур.\n\n§r • §6Обычные §rтекстуры чуть менее яркие и похожи на\n ванильное свечение сущностей. Яркость текстур\n§r варьируется в зависимости от их направления.\n\n§r • §eЯркие§r текстуры отображаются с максимальной\n§r яркостью и, как правило, хуже совместимы с\n§r шейдерами, но при этом лучше излучают свет.\n\n§r • §aАвтоматический§r режим обеспечивает лучшее\n свечение и совместимость с шейдерами.\n\n§c⚠§8 §8Если не установлен Iris, блоки-сущности\n §r§8будут всегда использовать §6Обычный §8метод.",
+  "config.entity_texture_features.enable_custom_textures.tooltip": "Включить случайные текстуры сущностей на\nоснове ресурсов в используемых наборах с\nиспользованием формата Optifine.",
+  "config.entity_texture_features.enable_elytra.tooltip": "Включить поддержку светящихся текстур\nдля элитр. Работает только в паре с CIT\nResewn, управляющим их загрузкой.",
+  "config.entity_texture_features.enable_emissive_textures.tooltip": "Включить светящиеся текстуры сущностей на\nоснове ресурсов в используемых наборах с\nиспользованием формата Optifine.",
+  "config.entity_texture_features.enable_enemy_team_players_skin_features.tooltip": "Включить отображение персонализации у игроков\nиз других команд. Отключение может быть полезным\nв мини-играх, где вид персонажа влияет на баланс.\n\n§c⚠§8 Применение настройки требует перезапуска игры.",
+  "config.entity_texture_features.enable_tridents.tooltip": "Включить поддержку пользовательских и\nсветящихся текстур для трезубца.\nСоздано для будущих обновлений CIT Resewn.\nТекстура трезубца зависит от его названия.\nТекстура \"§8trident_bobbys_trident.png§r\" будет\nиспользоваться при следующих названиях:\n\n§r • \"§b§oBobby's Trident§r\"\n§r • \"§b§o BoBb§8§o%§b§oYs Trid§8§o##§b§oen t§r\"\n§r • \"§b§obobbys_trident§r\"\n§r • и других подобных\n\n§6ℹ §7Для §7свечения §7используется\n§7 \"§8trident_bobbys_trident_e.png§7\".",
+  "config.entity_texture_features.pbr_compatibility.tooltip": "Если установлены шейдеры, ETF не будет\nвмешиваться в текстуры с поддержкой PBR.\n\n§c⚠§8 §8Это может привести к мерцанию текстур\n §8с некоторыми шейдерами.",
+  "config.entity_texture_features.player_skin_editor.coat_style.tooltip": "Функция продления текстуры куртки (второго\nслоя тела игрока) вплоть до 8 пикселей вниз.\nЕё можно использовать для имитации накидок,\nплатьев, балахонов и других видов одежды.\nПринцип работы весьма примитивен - просто\nпереносить в слой куртки для её удлинения\nверхнюю часть второго слоя ноги.\n\n§rВся - используется вся нога, в т.ч. её верх\n§r\"+\" - текстура копируется, а не переносится",
+  "config.entity_texture_features.skin_feature_print.tooltip": "Сгенерировать копию текстуры вашего скина,\nобъединённую с шаблоном поддерживаемых\nмодом функций, чтобы упростить освоение и\nнастройку возможностей персонализации.\n\nЧтобы сохранить файл шаблона, откройте мир\nи переключите перспективу на вид от\nтретьего лица. После завершения экспорта\nв чате появится уведомление.\n\n§6ℹ§7 Шаблон сохраняется в «§o.minecraft/config§7».",
+  "config.entity_texture_features.skin_features_enable_full_transparency.tooltip": "Включить поддержку полностью прозрачных скинов.\nЭто отменяет ограничение в 60%, и скины других\nигроков могут стать полностью невидимыми для вас.\n\n§c⚠§8 Применение настройки требует перезапуска игры.",
+  "config.entity_texture_features.skin_features_enable_transparency.tooltip": "Включить поддержку частично прозрачных скинов.\nМаксимальная прозрачность ограничена до 60%,\nчтобы избежать злоупотребления этой функцией.\n\n§6ℹ§7 Прозрачность определяется самим файлом скина.",
+  "config.entity_texture_features.skin_features_try_transparency_for_all.tooltip": "Попытаться включить прозрачность скинов у всех\nигроков, а не только у скинов формата ETF.\n\n§c⚠ §8Это отключает проверку полной прозрачности.",
+  "config.entity_texture_features.special_emissive_settings.tooltip": "Эта категория существует отдельно, поскольку\nне все догадываются о принадлежности данных\nобъектов к сущностям.",
+  "config.entity_texture_features.texture_update_frequency.tooltip": "Частота обновления текстур мобов для\nотображения изменений в их свойствах,\nтаких как здоровье или возраст.\n\n§r §9Никогда §r- обновления отключены\n§r §aМедленно §r- раз в 3-5 секунд\n§r §eСредне §r- раз в секунду\n§r §6Быстро §r- несколько раз в секунду\n §cМгновенно §r- в реальном времени\n\n§c⚠§8 Чем больше мобов, тем выше нагрузка."
+ },
+ "fdbosses": {
+  "death.attack.malkuth_hellshaper": "%s был сожжён до сосульки ледяным огненным шаром",
+  "fdbosses.skills.chesed.monoliths_description": "Призывает 4 монолита в начале боя.\n\nМонолиты деактивируются при смерти и их больше нельзя бить.\n\nМонолиты получают дополнительные {{(fdbosses:config_float) config=chesedConfig, value=additionalSecondPhaseMonolithHP}} здоровья во время второй фазы.",
+  "fdbosses.skills.malkuth.impaling_doom_description": "Тип урона: §cОгонь§r / §bЛёд§r\n\nМалхут ударяет землю, призывая §cогненные§r или §bледяные§r шипы."
+ },
+ "fzzy_config": {
+  "fc.validated_field.expression.sqrt.tip": "Квадратный корень\nвычисляет квадратный корень из заданного значения"
+ },
+ "goety": {
+  "advancements.goety.craft_ring_of_want.description": "Кольцо желания увеличивает количество предметов, выпадающих с существ, убитых заклинаниями или прислужниками; сначала его нужно зачаровать",
+  "block.goety.plushie_11": "Плюшевый §aKrakenKru",
+  "block.goety.sculptured_statue_5": "Статуэтка §aKrakenKru",
+  "info.goety.focus.Pos2": "§eМестоположение:§e"
+ },
+ "goety_revelation": {
+  "item.goety_revelation.apocalyptium_set.desc1": "§5Игнорирует §dурон от огня§5, §dмагический урон§5 и §dурон от взрыва§5.",
+  "tetra.material.gr_sky_wood_planks": "SkyWood",
+  "tetra.material.gr_sky_wood_planks.prefix": "SkyWood"
+ },
+ "goetydelight": {
+  "item.goetydelight.polarice": "polaRice",
+  "tooltip.goetydelight.doll.doll_fox": "Кукла QiyeDuyu",
+  "tooltip.goetydelight.doll.doll_lamiao": "Кукла mikumiku39super"
+ },
+ "guideme": {
+  "key.guideme.category": "GuideME"
+ },
+ "hexerei": {
+  "book.hexerei.intro_page_1.passage_1": " Добро пожаловать в очаровательный мир Hexerei, богатый и захватывающий опыт, наполненный мистическим очарованием! Если вы читаете эту книгу, значит, вы уже готовы окунуться в увлекательное путешествие по миру магии. Меня зовут JoeFoxe, и я создал этот мод, чтобы подарить вам незабываемые приключения.",
+  "book.hexerei.support_page_5.passage_2": "Создатель: JoeFoxe",
+  "gui.jei.category.dipper.resultSeconds": " §l: %s сек.§r",
+  "tooltip.hexerei.crow_flute_shift_1": "Способ управления воронами."
+ },
+ "industrialforegoing": {
+  "text.industrialforegoing.book.animal_growth_increaser": "Когда поддерживается энергией оно {кормит} едой, будет кормить детей животных чтобы заставить их {расти} быстрее.",
+  "text.industrialforegoing.book.animal_resource_harvester": "Когда машина обеспечена энергией, она пытается взаимодействовать с животными с помощью {вёдер} и {ножниц}, чтобы собрать ресурсы.",
+  "text.industrialforegoing.book.biofuel_generator": "Создаёт энергию когда запитан биотопливом. {Ведро} биотоплива может произвести 160RF/t, в общем {640,000}RF. Около {28} генераторов могут быть запущены из 1 {Bioreactor}.",
+  "text.industrialforegoing.book.crop_recolector": "Когда поддерживается энергией будет {собирать} полностью выросшие растения и рубить деревья, включая тыквы, арбузы и адский нарост. Каждая операция будет оставлять после себя немного {sludge} которая может использоваться в {Sludge Refiner} для получения разных материалов. (Заполненность никак не повлияет на работу)",
+  "text.industrialforegoing.book.energy_field_provider": "{Energy Field Addon} этот предмет устанавливается как улучшение в любую рабочую машину. Оно даёт {power} во внутренний энергетический буфер .@L@@L@{Energy Field Provider} может заряжать внутренний буфер с улучшениями {linked} на их {range}."
+ },
+ "irons_spellbooks": {
+  "death.attack.irons_spellbooks.summon_vex.item": "%1$s был выпотрошен врединами, призванными %2$s с помощью %3$s"
+ },
+ "itemfilters": {
+  "item.itemfilters.weak_nbt": "Фильтр по NBT (Слабый)"
+ },
+ "jade": {
+  "gui.jade.server_feature": "Эта функция требует установленных Beryl или Jade на сервере"
+ },
+ "legendary_monsters": {
+  "advancements.legendary_monsters.defeat_beheaded_knight.title": "Безголовый рыцарь-человек"
+ },
+ "lethality": {
+  "tooltip.lethality.bm_chestplate.tooltip": "« §8Почему-то он крепче кевлара. »",
+  "tooltip.lethality.mate_dulce.tooltip": "§8« ¡Хорошо прикормлен и никогда не мыт! »"
+ },
+ "mahoutsukai": {
+  "mahoutsukai.book.ascension.desc": "Данное заклинание, при использовании без ткани, перенесет любые сущности (включая предметы и существ) на самую высокую точку по Y, которую оно найдет. Свиток с этим заклинанием всего лишь перенесет заклинателя. %%n %%n %%val0 маны за 1 перенос.",
+  "mahoutsukai.book.death_collection_eyes.name": "Мистические Глаза Жнеца Душ по",
+  "mahoutsukai.book.drain_life_boundary.desc": "Круг высасывания жизни медленно высасывает жизнь с ближайших существ на расстоянии %%val2. За поглощенную жизнь - он восстанавливает владельцу жизнь, голод, и ману, в порядке зависящем от нужды заклинателя. %%n %%n %%val0 маны каждые %%val1 секунд(ы).",
+  "mahoutsukai.book.rule_breaker.desc": "Получаемый заклинанием изменения вероятностей, кинжал контролирует вероятности заклинателя через Деленис и Модулюс кинжала. Модулюс задается при создании, Деленис в свою очередь увеличивается нажатием (Шифт +ПКМ). При нажатии (ПКМ) Нарушителем правил заклинатель получит эффект что вернет определенное случайное число при запрашивании игроком.",
+  "mahoutsukai.book.selective_displacement.desc": "Используйте свиток чтобу получить эффект. При активности нажмите на %%k0 чтобы поменятся местами с выбранным существом. Или зажмите кнопку чтобы выбрать два существа и поменять их местами.%%n%%nСуществует короткий кулдаун между заменами. %%val0 маны за использование."
+ },
+ "mekanism": {
+  "network.mekanism.chemical": "Химическая сеть"
+ },
+ "mekanismtools": {
+  "item.mekanismtools.bronze_paxel": "Бронзовый мультиинструмент",
+  "item.mekanismtools.diamond_paxel": "Алмазный мультиинструмент",
+  "item.mekanismtools.gold_paxel": "Золотой мультиинструмент",
+  "item.mekanismtools.iron_paxel": "Железный мультиинструмент",
+  "item.mekanismtools.lapis_lazuli_paxel": "Лазуритовый мультиинструмент",
+  "item.mekanismtools.osmium_paxel": "Осмиевый мультиинструмент",
+  "item.mekanismtools.refined_glowstone_paxel": "Очищенный светокаменный мультиинструмент",
+  "item.mekanismtools.refined_obsidian_paxel": "Очищенный обсидиановый мультиинструмент",
+  "item.mekanismtools.steel_paxel": "Стальной мультиинструмент",
+  "item.mekanismtools.stone_paxel": "Каменный мультиинструмент",
+  "item.mekanismtools.wood_paxel": "Деревянный мультиинструмент"
+ },
+ "minecraft": {
+  "commands.version.header": "Информация о версии сервера:",
+  "commands.version.stable.no": "stable = нет",
+  "commands.version.stable.yes": "stable = да"
+ },
+ "modernfix": {
+  "modernfix.option.mixin.perf.boost_worker_count": "Только 1.16. Удаляет жёсткое ограничение на количество рабочих потоков, как сделали Mojang'и 1.18."
+ },
+ "modularrouters": {
+  "modularrouters.itemText.usage.item.fluid_module": "Переносит жидкости в/из маршрутизатора в/из соседнего блока в направлении, указанном в модуле.${br}• Модуль должен быть установлен в маршрутизатор и получать энергию."
+ },
+ "mutantmonsters": {
+  "item.mutantmonsters.mutant_skeleton_boots": "Ботинки скелета мутанта",
+  "item.mutantmonsters.mutant_skeleton_chestplate": "Нагрудник скелета мутанта",
+  "item.mutantmonsters.mutant_skeleton_leggings": "Поножи скелета мутанта",
+  "item.mutantmonsters.mutant_skeleton_shoulder_pad": "Наплечник скелета мутанта",
+  "item.mutantmonsters.mutant_skeleton_skull": "Череп скелета мутанта",
+  "item.mutantmonsters.mutant_snow_golem_spawn_egg": "Яйцо призыва снежного голема-мутанта"
+ },
+ "naturesaura": {
+  "block.naturesaura.ancient_sapling": "Древний саженец"
+ },
+ "not_enough_glyphs": {
+  "item.ars_nouveau.thread_shaper_focus": "Фокус формовки блоков"
+ },
+ "projectvibrantjourneys": {
+  "item.projectvibrantjourneys.fly_spawn_egg": "Яйцо призыва мухи"
+ },
+ "punchy": {
+  "punchy.tuning.property.off_x": "offX",
+  "punchy.tuning.property.off_y": "offY",
+  "punchy.tuning.property.pivot_x": "pivotX"
+ },
+ "refined_mod": {
+  "item.refined_mod.flame_tongue_sword": "Пламенный язык"
+ },
+ "saintsdragons": {
+  "text.autoconfig.saintsdragonsspawning.option.reactiveTerrainClearingOnDamage.@Tooltip": "Когда драконы ранены или им мешают, они ломают близлежащие мягкие блоки вокруг верхней части тела, чтобы освободиться. Это можно отключить, чтобы драконы не разрушали ландшафт (моб-грифинг)."
+ },
+ "smsn": {
+  "smsn.mod.immersiveengineering": "ImmersiveEngineering",
+  "smsn.mod.projecte": "ProjectE",
+  "smsn.mod.tenshilib": "TenshiLib"
+ },
+ "snuffles": {
+  "snuffles.option.snuffles_weight.desc": "Вес появления сноффлов"
+ },
+ "species": {
+  "advancements.species.start_spectre_challenge.description": "Пройдите испытание Спектралибура"
+ },
+ "starcatcher": {
+  "gui.guide.page.0.left.11": " Следите за поплавком",
+  "gui.guide.page.0.left.9": " Как только она окажется ",
+  "gui.guide.page.1.left.9": " Знание всех повадок",
+  "gui.guide.page.1.right.10": " и исчезают навсегда.",
+  "gui.guide.page.1.right.12": " Каменные точки почти",
+  "gui.guide.page.1.right.13": " не дают прогресса.",
+  "gui.guide.page.1.right.15": " Золотые точки дают",
+  "gui.guide.page.1.right.16": " прогресс сокровищ.",
+  "gui.guide.page.1.right.3": " Базовая идеальная точка.",
+  "gui.guide.page.1.right.6": " Замороженная точка.",
+  "gui.guide.page.1.right.7": " Лучше её избегать.",
+  "gui.guide.page.12.left.11": " Трофейная рыба клюнет",
+  "gui.guide.page.12.left.5": " Трофеи — это символ",
+  "gui.guide.page.12.right.10": " Ищите подсказки о",
+  "gui.guide.page.2.left.7": "почувствовать, что-то",
+  "gui.guide.page.2.right.8": " Сильные рыбы могут",
+  "gui.guide.page.3.left.8": " Предел мечтаний",
+  "gui.guide.page.4.left.8": " Он служит хранилищем",
+  "gui.guide.page.8.right.15": " Какой-нибудь одинокий",
+  "gui.guide.page.8.right.5": " Тех, кто их оставил,",
+  "gui.guide.sort": " [Сорт.]",
+  "gui.secret_note.true_blue.0": " Что-то вставлено,",
+  "gui.secret_note.true_blue.1": " или вынуто, или изучено.",
+  "gui.secret_note.true_blue.10": " назад, отражённое в моих глазах,",
+  "gui.secret_note.true_blue.11": " или плавающее за твоими.",
+  "gui.secret_note.true_blue.13": " В матери твоей матери,",
+  "gui.secret_note.true_blue.14": " или ребёнке твоего ребёнка,",
+  "gui.secret_note.true_blue.15": " во сне или наяву.",
+  "gui.secret_note.true_blue.3": " Что-то скрыто глубоко внутри,",
+  "gui.secret_note.true_blue.4": " и всегда там было.",
+  "gui.secret_note.true_blue.6": " Или ты проглотил это,",
+  "gui.secret_note.true_blue.7": " или выплюнул наружу.",
+  "gui.secret_note.true_blue.9": " Десять лет или десять мгновений",
+  "tooltip.starcatcher.naturalist_rod.2": "палка и бечёвка."
+ },
+ "subtle_effects": {
+  "config.subtle_effects.entities.damageTaken.damagedSlimeSlime": "Повреждённая слизь"
+ },
+ "terramity": {
+  "item.terramity.lucky_dice.desc3": "§e -Даёт способность §cистинного крита §eдля любого урона",
+  "item.terramity.lucky_dice.desc4": "§e -§cИстинные криты §eдают ×1,66 урона с базовым шансом 20%, +10% за каждый уровень §aУдачи",
+  "item.terramity.terramity_guidebook_icon.desc3": "§7/give @p patchouli:guide_book{\"patchouli:book\":\"terramity_guidebook\"}",
+  "item.terramity.terramity_guidebook_icon.description_2": "§7/give @p patchouli:guide_book{\"patchouli:book\":\"terramity_guidebook\"}"
+ },
+ "tiered": {
+  "tiered:epic_gun_8.label": "Модель Warhost"
+ }
+}

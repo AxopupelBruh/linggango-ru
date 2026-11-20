@@ -41,6 +41,10 @@ FILES = [
     (ROOT / "resourcepacks/zz_linggango_ru.zip", "install/resourcepacks/zz_linggango_ru.zip"),
     (ROOT / "kubejs/client_scripts/ru_tooltip_translator.js",
      "install/kubejs/client_scripts/ru_tooltip_translator.js"),
+    (ROOT / "kubejs/client_scripts/ars-nouveau-ponders.js",
+     "install/kubejs/client_scripts/ars-nouveau-ponders.js"),
+    (ROOT / "kubejs/server_scripts/ru_measure_of_stone.js",
+     "install/kubejs/server_scripts/ru_measure_of_stone.js"),
     (ROOT / "mods/zz_linggango_ru_books.jar", "install/mods/zz_linggango_ru_books.jar"),
     (DOCS / "ГАЙД_ЛОКАЛИЗАЦИИ.md", "docs/LOCALIZATION_GUIDE.md"),
     (DOCS / "LINGGANGO_TRANSLATION_PLAN.md", "docs/TRANSLATION_PLAN.md"),
@@ -58,7 +62,8 @@ DICTS = [
     "mods_ru.json", "quests_ru.json", "patchouli_ru.json", "ui_strings_ru.json",
     "pack_script_ru.json", "terms_merged.json", "vanilla_ru_ru.json",
     "extra_ru.json", "runtime_missing_ru.json", "runtime_manual_ru.json",
-    "ui_strings_manual_ru.json",
+    "ui_strings_manual_ru.json", "key_overrides.json", "stale_fix_ru.json",
+    "polish_fix_ru.json",
 ]
 
 # скрипты: в релиз идут только рабочие, без одноразовых правок.
@@ -85,6 +90,7 @@ TOOL_KEEP = (
     "restore_our_translation.py", "run.py", "scan_java_strings.py",
     "scan_ui_strings.py", "snbt_text.py", "sync_books_datapack.py",
     "tr_engine.py", "translate_runtime_missing.py", "translate_ui_deepseek.py",
+    "translate_stale_jar.py", "fix_polish.py",
     "verify.py", "verify_all.py", "verify_pack.py", "verify_quests.py",
 )
 
@@ -168,11 +174,28 @@ def _build_into(stage: Path) -> None:
     print(f"  tools/ ({len(list(tools_dir.iterdir()))} скриптов)")
     print(f"\nвсего файлов: {n}")
 
-    # проверка на секреты
-    bad = [p for p in stage.rglob("*") if p.is_file() and (
-        "key" in p.name.lower() or p.suffix in (".env", ".pem"))]
+    # проверка на секреты: файлы с ключами API, а не любое «key» в имени
+    SAFE_NAMES = {"key_overrides.json"}
+    bad = [p for p in stage.rglob("*") if p.is_file() and p.name not in SAFE_NAMES and (
+        "api_key" in p.name.lower() or ".deepl_key" in p.name
+        or ".deepseek_key" in p.name or ".gemini_key" in p.name
+        or p.suffix in (".env", ".pem"))]
     if bad:
         raise SystemExit(f"ВНИМАНИЕ: в релизе есть подозрительные файлы: {bad}")
+    # ключи внутри скриптов/данных
+    import re as _re
+    PAT = _re.compile(r"(sk-[A-Za-z0-9]{20,}|[0-9a-f]{32}:[A-Za-z0-9_-]{30,})")
+    leaked = []
+    for p in stage.rglob("*"):
+        if not p.is_file() or p.suffix not in (".py", ".json", ".js", ".md", ".txt"):
+            continue
+        try:
+            if PAT.search(p.read_text(encoding="utf-8", errors="ignore")):
+                leaked.append(p)
+        except OSError:
+            pass
+    if leaked:
+        raise SystemExit(f"ВНИМАНИЕ: похоже на API-ключ в файлах: {leaked}")
     print("секретов в релизе нет")
 
 

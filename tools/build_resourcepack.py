@@ -10,6 +10,7 @@
 from __future__ import annotations
 
 import json
+import difflib
 import re
 import sys
 import zipfile
@@ -97,7 +98,9 @@ def content_signature(text: str) -> tuple:
 
 
 
-def build_lang_files(out: Path, translations: dict[str, str]) -> tuple[int, int]:
+def build_lang_files(out: Path, translations: dict[str, str],
+                     stale_fix: dict[str, str] | None = None,
+                     polish_fix: dict[str, str] | None = None) -> tuple[int, int]:
     """Пишет assets/<ns>/lang/ru_ru.json.
 
     ВАЖНО: в Minecraft файл языка ресурспака ЗАМЕНЯЕТ файл мода целиком
@@ -182,6 +185,17 @@ def build_lang_files(out: Path, translations: dict[str, str]) -> tuple[int, int]
             # съехал по ключам: в остальных модах перевод вправе менять разметку.
             broken = sig_ru[0] != sig_en[0]
             shifted = ns in STRICT_NS and sig_ru != sig_en
+            # Устаревший чужой перевод: мод приложил ru_ru.json от прошлой
+            # версии, и числа разошлись с en_us («Deals 25%» → «Возвращает
+            # 35%», «Y level -32 and 64» → «на уровне Y 50 и ниже»).
+            # Для таких строк есть свежий перевод по английскому тексту —
+            # work/stale_fix_ru.json (см. translate_stale_jar.py).
+            if not (broken or shifted) and stale_fix:
+                fresh = stale_fix.get(val)
+                if fresh and fresh.strip() and content_signature(fresh)[0] == sig_en[0]:
+                    merged[key] = fresh
+                    changed += 1
+                    continue
             if broken or shifted:
                 if ru and ru.strip():
                     sig_our = content_signature(ru)
@@ -219,6 +233,14 @@ def build_lang_files(out: Path, translations: dict[str, str]) -> tuple[int, int]
             if merged.get(key) != ru:
                 merged[key] = ru
                 changed += 1
+        # Дошлифовка (обрывы текста, разнобой «ты/вы») — идёт последней,
+        # потому что правит уже готовый текст.
+        if polish_fix:
+            for key, en_val in en.items():
+                fresh = polish_fix.get(en_val) if isinstance(en_val, str) else None
+                if fresh and fresh.strip() and merged.get(key) != fresh:
+                    merged[key] = fresh
+                    changed += 1
         if not changed:
             continue
         path = out / "assets" / ns / "lang" / "ru_ru.json"
@@ -237,6 +259,36 @@ TEXT_FIELDS = ("text", "title", "description", "subtitle", "header", "footer", "
 LBL_OPEN = r"\$\((?:l|item|entity|t|c|hover|key|lang)(?:[:/][^)]*)?\)"
 LBL_CLOSE = r"\$\((?:/l)?\)"
 LBL_RE = re.compile(f"({LBL_OPEN})([^$]*?)({LBL_CLOSE})")
+
+# Строка-значение, которая на самом деле lang-ключ, а не текст:
+# book.mysticalagriculture.crafting, ars_nouveau.page1.sourceberry_bush.
+# Patchouli такие строки прогоняет через I18n и берёт перевод из lang-файла,
+# поэтому переводить их НЕЛЬЗЯ: перевод («книга.мистическое...крафт») игра
+# покажет как есть, а сам ключ перестанет находиться.
+LANG_KEY = re.compile(r"^[a-z][a-z0-9_]*(?:\.[a-z0-9_]+)+$")
+
+
+def is_lang_key(text: str) -> bool:
+    """Похоже ли значение поля книги на lang-ключ (а не на обычный текст)."""
+    s = text.strip()
+    if not s or " " in s or "$(" in s or "\n" in s:
+        return False
+    if s.endswith((".png", ".json", ".nbt", ".snbt")):
+        return False
+    return bool(LANG_KEY.match(s))
+
+
+def repair_lang_key(key: str, known: set[str]) -> str:
+    """Починит опечатку в ключе книги (mysticalagricultural -> mysticalagriculture).
+
+    Модель иногда «правит» ключ руками, и страница перестаёт находить перевод.
+    Возвращаем ближайший существующий ключ, только если совпадение очень
+    близкое — иначе ключ не трогаем.
+    """
+    if key in known:
+        return key
+    cand = difflib.get_close_matches(key, known, n=1, cutoff=0.94)
+    return cand[0] if cand else key
 
 
 def apply_labels(text: str, labels: dict[str, str]) -> str:
@@ -268,6 +320,19 @@ def build_patchouli(out: Path, translations: dict[str, str],
     labels = labels or {}
     books = 0
     fields = 0
+    # все ключи, которые вообще существуют в сборке — по ним чиним опечатки
+    known_keys: set[str] = set()
+    for jar in sorted(MODS.glob("*.jar")):
+        try:
+            z = zipfile.ZipFile(jar)
+        except Exception:
+            continue
+        for nm in z.namelist():
+            if nm.endswith(("/lang/en_us.json", "/lang/ru_ru.json")):
+                try:
+                    known_keys.update(load_lang_json(z.read(nm)))
+                except Exception:
+                    continue
     for jar in sorted(MODS.glob("*.jar")):
         try:
             z = zipfile.ZipFile(jar)
@@ -308,8 +373,14 @@ def build_patchouli(out: Path, translations: dict[str, str],
                 if isinstance(node, dict):
                     for k, v in node.items():
                         if k in TEXT_FIELDS and isinstance(v, str):
+                            # Значение-ключ не переводим: Patchouli сам возьмёт
+                            # перевод из lang-файла, а «перевод ключа» ломает
+                            # страницу (в игре виден сам ключ).
+                            if is_lang_key(v):
+                                node[k] = repair_lang_key(v, known_keys)
+                                continue
                             ru = translations.get(v)
-                            if ru and ru.strip():
+                            if ru and ru.strip() and not is_lang_key(ru):
                                 node[k] = apply_labels(ru, labels)
                                 fields += 1
                             else:
@@ -357,7 +428,19 @@ def main():
     stage.mkdir(parents=True)
 
     mod_ru = load_ru("mods")
-    files, keys = build_lang_files(stage, mod_ru)
+    # Свежий перевод строк, где чужой ru_ru.json в jar отстал от en_us.
+    stale_fix = {}
+    sf_path = WORK / "stale_fix_ru.json"
+    if sf_path.exists():
+        stale_fix = json.loads(sf_path.read_text(encoding="utf-8"))
+        print(f"свежих переводов вместо устаревших: {len(stale_fix)}")
+    # Дошлифовка: обрывы текста и разнобой «ты/вы» (fix_polish.py).
+    polish_fix = {}
+    pf_path = WORK / "polish_fix_ru.json"
+    if pf_path.exists():
+        polish_fix = json.loads(pf_path.read_text(encoding="utf-8"))
+        print(f"дошлифовка: {len(polish_fix)}")
+    files, keys = build_lang_files(stage, mod_ru, stale_fix, polish_fix)
     print(f"lang-файлов: {files}, ключей: {keys}")
 
     po_ru = load_ru("patchouli")
