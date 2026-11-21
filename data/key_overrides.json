@@ -339,5 +339,27 @@
  },
  "tiered": {
   "tiered:epic_gun_8.label": "Модель Warhost"
+ },
+ "confluence": {
+  "info.confluence.dps_meter": "УВС: %s",
+  "item.confluence.dps_meter": "Счётчик УВС",
+  "item.confluence.dps_meter.info": "Счётчик УВС может выпасть из крипера."
+ },
+ "linggango_tweaks": {
+  "linggango_tweaks.quest_notice.fresh": "+%s новых",
+  "linggango_tweaks.quest_notice.nudge": "Наград ждёт: %s",
+  "linggango_tweaks.quest_notice.more_title": "+%s квестов",
+  "linggango_tweaks.quest_notice.quest": "Квест завершён",
+  "linggango_tweaks.config.restart": "Часть изменений применится после перезахода в мир",
+  "linggango_tweaks.config.needs_restart": "Нужен перезаход в мир",
+  "linggango_tweaks.keybinds.search": "Поиск клавиш...",
+  "linggango_tweaks.keybinds.filter.unbound": "Без клавиши",
+  "item.linggango_tweaks.crayfish_spawn_egg": "Яйцо призыва рака",
+  "item.linggango_tweaks.raw_prawn": "Сырое мясо рака",
+  "item.linggango_tweaks.cooked_prawn": "Жареное мясо рака",
+  "entity.linggango_tweaks.crayfish": "Речной рак",
+  "block.linggango_tweaks.warding_torch": "Жаровня",
+  "block.linggango_tweaks.hushing_lamp": "Жаровня душ",
+  "linggango_tweaks.gacha.skip_hint": "[Пробел] [Ввод] [ЛКМ] — пропустить"
  }
 }
