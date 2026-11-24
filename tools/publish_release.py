@@ -34,7 +34,6 @@ REPO = "AxopupelBruh/linggango-ru"
 
 # документы по переводу лежат рядом с рабочим каталогом
 DOCS = HERE.parent / "docs"
-PROMPT_SRC = DOCS / "ПРОМТ_СИСТЕМНЫЙ_EN_RU.txt"
 
 # что копируем: (источник, назначение внутри релиза)
 FILES = [
@@ -48,10 +47,6 @@ FILES = [
     (ROOT / "kubejs/server_scripts/ru_measure_of_stone.js",
      "install/kubejs/server_scripts/ru_measure_of_stone.js"),
     (ROOT / "mods/zz_linggango_ru_books.jar", "install/mods/zz_linggango_ru_books.jar"),
-    (DOCS / "ГАЙД_ЛОКАЛИЗАЦИИ.md", "docs/LOCALIZATION_GUIDE.md"),
-    (DOCS / "LINGGANGO_TRANSLATION_PLAN.md", "docs/TRANSLATION_PLAN.md"),
-    (HERE / "release/README.md", "README.md"),
-    (HERE / "release/gitignore", ".gitignore"),
 ]
 
 DIRS = [
@@ -67,6 +62,9 @@ DICTS = [
     "ui_strings_manual_ru.json", "key_overrides.json", "stale_fix_ru.json",
     "polish_fix_ru.json", "loading_tips_ru.json", "loading_lines_ru.json",
     "loading_tips_en.json", "loading_lines_en.json",
+    # снимок чужих переводов, которые мы забрали к себе: без него сборка
+    # не повторится, если пака-источника не окажется на диске
+    "mploc_ru.json",
 ]
 
 # скрипты: в релиз идут только рабочие, без одноразовых правок.
@@ -86,6 +84,7 @@ TOOL_KEEP = (
     "fix_patchouli.py", "fix_patchouli_labels.py", "fix_translate.py",
     "fix_ui_brands.py", "fix_zwnj.py", "fixup.py", "ftbq_parse.py",
     "gemini_backend.py", "install_community_translation.py", "lang_json.py",
+    "lang_sources.py",
     "lgq_crypt.py", "manual_extra.py", "manual_fixes.py",
     "manual_github_merge.py", "manual_machines.py", "merge_ui_caches.py",
     "normalize_terms.py", "paths.py", "polish_ru.py", "publish_release.py",
@@ -157,9 +156,6 @@ def _build_into(stage: Path) -> None:
         if p.exists():
             n += copy(p, f"data/{d}", stage)
             print(f"  data/{d}")
-    if PROMPT_SRC.exists():
-        n += copy(PROMPT_SRC, "docs/SYSTEM_PROMPT_EN_RU.txt", stage)
-        print("  docs/SYSTEM_PROMPT_EN_RU.txt")
     tools_dir = stage / "tools"
     tools_dir.mkdir(parents=True, exist_ok=True)
     for name in TOOL_KEEP:

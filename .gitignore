@@ -21,3 +21,6 @@ work/*.json.bak
 # Системный мусор
 .DS_Store
 Thumbs.db
+
+# Архив релиза собирается tools/build_release_archive.py и уходит в Releases
+release/

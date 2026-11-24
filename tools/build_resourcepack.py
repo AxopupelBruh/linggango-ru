@@ -21,6 +21,15 @@ sys.path.insert(0, str(Path(__file__).parent))
 from paths import INSTANCE, WORK_DIR  # noqa: E402
 from brands import restore_brands  # noqa: E402
 from lang_json import load_lang_json  # noqa: E402
+from lang_sources import (  # noqa: E402
+    dir_lang,
+    load_mploc_snapshot,
+    mod_lang,
+    mod_namespaces,
+    pack_assets,
+    pack_lang,
+    save_mploc_snapshot,
+)
 
 HERE = Path(__file__).parent
 ROOT = INSTANCE
@@ -34,6 +43,14 @@ def load_ru(source: str) -> dict[str, str]:
     if not p.exists():
         return {}
     return json.loads(p.read_text(encoding="utf-8"))
+
+
+def load_pack_lang(pack_name: str) -> dict[str, dict[str, str]]:
+    """Чужие переводы из ресурспака (MPLOCmods) — по неймспейсам.
+
+    Оставлено для разовых запросов; основной сбор идёт через lang_sources.
+    """
+    return pack_lang(ROOT / "resourcepacks" / pack_name)
 
 
 # ведущая разметка (§-коды, теги, пробелы) — её пропускаем, сравнивая первые буквы
@@ -97,6 +114,36 @@ def content_signature(text: str) -> tuple:
     return placeholder_signature(text) + (tuple(nums), tuple(roman))
 
 
+def args_broken(ru: str, en: str) -> bool:
+    """Разошлись ли %-аргументы перевода с оригиналом."""
+    return placeholder_signature(ru) != placeholder_signature(en)
+
+
+def pick_from_chain(src: list[dict[str, str]], key: str, en_val: str,
+                    skip: str | None = None) -> str | None:
+    """Берёт перевод ключа из следующего источника, если текущий битый.
+
+    Источники идут в порядке приоритета; пропускаем уже использованное
+    значение, английский текст и переводы с разъехавшимися %-аргументами.
+    """
+    fallback = None
+    for d in src:
+        v = d.get(key)
+        if not isinstance(v, str) or not v.strip():
+            continue
+        v = v.strip()
+        if skip is not None and v == skip.strip():
+            continue
+        if en_val and v == en_val.strip():
+            continue
+        if args_broken(v, en_val):
+            continue
+        if CYR.search(v):
+            return v
+        if fallback is None:
+            fallback = v
+    return fallback
+
 
 def build_lang_files(out: Path, translations: dict[str, str],
                      stale_fix: dict[str, str] | None = None,
@@ -104,31 +151,42 @@ def build_lang_files(out: Path, translations: dict[str, str],
     """Пишет assets/<ns>/lang/ru_ru.json.
 
     ВАЖНО: в Minecraft файл языка ресурспака ЗАМЕНЯЕТ файл мода целиком
-    (а не дополняет его). Поэтому мы обязаны писать полный объединённый файл:
-    сначала чужие переводы мода, поверх — наши правки.
+    (а не дополняет его). Поэтому мы обязаны писать полный объединённый
+    файл: сначала чужие переводы (мод, пак KubeJS, пак serilum, чужие
+    локализации), поверх — наши правки. Иначе уберём чужой пак из списка —
+    и часть переводов пропадёт, игрок снова увидит английский.
     """
-    en_by_ns: dict[str, dict[str, str]] = defaultdict(dict)
-    ru_by_ns: dict[str, dict[str, str]] = defaultdict(dict)
-    for jar in sorted(MODS.glob("*.jar")):
-        try:
-            z = zipfile.ZipFile(jar)
-        except Exception:
-            continue
-        for name in z.namelist():
-            if "/lang/" not in name:
-                continue
-            folder, fname = name.rsplit("/", 1)
-            if fname not in ("en_us.json", "ru_ru.json"):
-                continue
-            try:
-                data = load_lang_json(z.read(name))
-            except Exception:
-                continue
-            ns = folder.split("/")[1]
-            (en_by_ns if fname == "en_us.json" else ru_by_ns)[ns].update(data)
+    en_by_ns, ru_by_ns = mod_lang(MODS)
+    build_ns = mod_namespaces(MODS)
 
-    files = 0
-    keys = 0
+    kubejs_ru = dir_lang(ROOT / "kubejs" / "assets")
+    serilum_ru = dir_lang(ROOT / "data" / "serilum" / "translations")
+
+    # Чужие локализации — только для модов, которые есть в сборке.
+    # Снимок сохраняем, чтобы сборка не зависела от наличия пака на диске.
+    snapshot = WORK / "mploc_ru.json"
+    mploc_ru = pack_lang(ROOT / "resourcepacks" / "MPLOCmods.zip",
+                         only=build_ns | {"minecraft"})
+    if not mploc_ru:
+        mploc_ru = load_mploc_snapshot(snapshot)
+    if mploc_ru:
+        save_mploc_snapshot(snapshot, mploc_ru)
+        print(f"чужие переводы (MPLOCmods): {sum(len(v) for v in mploc_ru.values())} ключей "
+              f"в {len(mploc_ru)} неймспейсах")
+
+    # Цепочка источников по неймспейсам. Первая годная строка побеждает:
+    # перевод мода важнее чужих локализаций, KubeJS и serilum — важнее
+    # MPLOCmods (они идут в игре выше по приоритету).
+    chain: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for ns, d in ru_by_ns.items():
+        chain[ns].append(d)
+    for ns, d in kubejs_ru.items():
+        chain[ns].append(d)
+    for ns, d in serilum_ru.items():
+        chain[ns].append(d)
+    for ns, d in mploc_ru.items():
+        chain[ns].append(d)
+
     # Ванильный ru_ru: lang-файл ресурспака ЗАМЕНЯЕТ файл клиента целиком.
     # Если приложить свой assets/minecraft/lang/ru_ru.json с парой ключей,
     # весь ванильный интерфейс откатится на английский. Поэтому берём
@@ -146,41 +204,58 @@ def build_lang_files(out: Path, translations: dict[str, str],
         key_overrides = json.loads(opath.read_text(encoding="utf-8"))
         print(f"точечных правок по ключу: {sum(len(v) for v in key_overrides.values())}")
 
-    for ns, en in en_by_ns.items():
-        existing = ru_by_ns.get(ns, {})
-        # объединённый файл: чужие переводы сохраняем, наши — поверх
-        merged = dict(existing)
+    files = 0
+    keys = 0
+    for ns in sorted(set(chain) | set(en_by_ns) | {"minecraft"}):
+        en = en_by_ns.get(ns, {})
+        src = chain.get(ns, [])
+        # Объединённый файл: всё, что было видно в игре. Кто первый дал
+        # ключ — тот и главный: перевод мода не трогаем без нужды.
+        merged: dict[str, str] = {}
+        for d in src:
+            for k, v in d.items():
+                merged.setdefault(k, v)
         changed = 0
+        # Файл обязателен, если из него забираем чужие переводы: иначе,
+        # убрав чужой пак из списка, мы потеряем эти ключи.
+        must_write = ns in mploc_ru
         for key, val in en.items():
             if not isinstance(val, str):
                 continue
-            cur = existing.get(key)
             ru = translations.get(val)
+            cur = merged.get(key)
             if cur is not None and not cur.strip() and val.strip():
                 # мод отдал ПУСТОЙ перевод при непустом английском — в игре строка пустая.
-                # Перекрываем нашим переводом.
-                if ru and ru.strip():
+                alt = pick_from_chain(src, key, val, skip=cur)
+                if ru and ru.strip() and not args_broken(ru, val):
                     merged[key] = ru
+                    changed += 1
+                elif alt:
+                    merged[key] = alt
                     changed += 1
                 continue
             if cur is None:
-                # у мода нет своего перевода — берём наш
+                # перевода нет ни у кого — берём наш
                 if ru and ru.strip():
                     merged[key] = ru
                     changed += 1
                 continue
             if cur == val:
-                # мод приложил ru_ru.json, но там английский текст —
+                # приложили перевод, а там английский текст —
                 # перекрываем нашим переводом (иначе в игре остаётся английский)
+                alt = pick_from_chain(src, key, val, skip=cur)
                 if ru and ru.strip():
                     merged[key] = ru
                     changed += 1
+                elif alt:
+                    merged[key] = alt
+                    changed += 1
                 continue
-            # у мода есть собственный перевод — обычно не трогаем его.
+            # у кого-то есть свой перевод — обычно не трогаем его.
             # Исключения: битые %-аргументы, английский текст вместо перевода.
             sig_en = content_signature(val)
             sig_ru = content_signature(cur)
-            # %-аргументы сверяем всегда (без них в игре «%с» вместо значения).
+            # %-аргументы сверяем всегда (без них в игре «%s» вместо значения).
             # §-коды, числа и римские цифры — только там, где перевод мода
             # съехал по ключам: в остальных модах перевод вправе менять разметку.
             broken = sig_ru[0] != sig_en[0]
@@ -197,6 +272,7 @@ def build_lang_files(out: Path, translations: dict[str, str],
                     changed += 1
                     continue
             if broken or shifted:
+                alt = pick_from_chain(src, key, val, skip=cur)
                 if ru and ru.strip():
                     sig_our = content_signature(ru)
                     match = (sig_our == sig_en) if ns in STRICT_NS else (sig_our[0] == sig_en[0])
@@ -204,6 +280,10 @@ def build_lang_files(out: Path, translations: dict[str, str],
                         merged[key] = ru
                         changed += 1
                         continue
+                if alt:
+                    merged[key] = alt
+                    changed += 1
+                    continue
                 merged[key] = val
                 changed += 1
                 continue
@@ -241,7 +321,7 @@ def build_lang_files(out: Path, translations: dict[str, str],
                 if fresh and fresh.strip() and merged.get(key) != fresh:
                     merged[key] = fresh
                     changed += 1
-        if not changed:
+        if not changed and not must_write:
             continue
         path = out / "assets" / ns / "lang" / "ru_ru.json"
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -402,6 +482,30 @@ def build_patchouli(out: Path, translations: dict[str, str],
             target.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
             books += 1
     return books, fields
+
+
+def adopt_foreign_books(out: Path) -> int:
+    """Забирает переведённые книги из чужого пака (MPLOCmods).
+
+    Чужой пак мы убираем из списка — значит его книги должны быть у нас.
+    Берём только то, чего у нас нет, и только для модов, что есть в сборке.
+    """
+    pack = ROOT / "resourcepacks" / "MPLOCmods.zip"
+    if not pack.exists():
+        return 0
+    build_ns = mod_namespaces(MODS)
+    prefixes = tuple(f"assets/{ns}/" for ns in sorted(build_ns))
+    copied = 0
+    for name, data in pack_assets(pack, prefixes).items():
+        if "/patchouli_books/" not in name and "/tips/" not in name:
+            continue
+        target = out / name
+        if target.exists():
+            continue
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(data)
+        copied += 1
+    return copied
 
 
 def write_pack_mcmeta(out: Path) -> None:
@@ -576,6 +680,12 @@ def main():
     books, fields = build_patchouli(stage, po_ru, labels)
     print(f"книг: {books}, переведённых полей: {fields}, меток ссылок: {len(labels)}")
 
+    # Переводы книг из чужого пака (MPLOCmods) — забираем к себе, чтобы
+    # после удаления чужого пака из списка книги не остались на английском.
+    adopted = adopt_foreign_books(stage)
+    if adopted:
+        print(f"книг из чужого пака: {adopted}")
+
     write_pack_mcmeta(stage)
 
     # Иконки шрифтов: наш пак последний, поэтому его default.json — итоговый.
@@ -609,6 +719,7 @@ def main():
     # поэтому наш пак должен быть ПОСЛЕДНИМ — иначе его перекроют
     # чужие локализации (MPLOCmods и т.п.).
     entry = f'"file/{PACK_NAME}.zip"'
+    foreign = '"file/MPLOCmods.zip"'
 
     def put_last(text: str, prefix: str) -> str:
         """Ставит запись последней в списке паков (и убирает старую копию)."""
@@ -620,19 +731,32 @@ def main():
         items.append(entry)
         return text[:m.start(1)] + ", ".join(items) + text[m.end(1):]
 
+    def drop_foreign(text: str, prefix: str) -> str:
+        """Убирает чужой локализационный пак: он нам больше не нужен."""
+        m = re.search(re.escape(prefix) + r"\[(.*?)\]", text, flags=re.S)
+        if not m:
+            return text
+        items = [it.strip() for it in m.group(1).split(",") if it.strip()]
+        if foreign not in items:
+            return text
+        items = [it for it in items if it != foreign]
+        return text[:m.start(1)] + ", ".join(items) + text[m.end(1):]
+
     toml = ROOT / "config/linggango-resourcepacks.toml"
     text = toml.read_text(encoding="utf-8")
     new_text = put_last(text, "packs = ")
+    new_text = drop_foreign(new_text, "packs = ")
     if new_text != text:
         toml.write_text(new_text, encoding="utf-8")
-        print("наш пак последний в linggango-resourcepacks.toml")
+        print("наш пак последний в linggango-resourcepacks.toml, MPLOCmods убран")
 
     opts = ROOT / "options.txt"
     otext = opts.read_text(encoding="utf-8")
     new_otext = put_last(otext, "resourcePacks:")
+    new_otext = drop_foreign(new_otext, "resourcePacks:")
     if new_otext != otext:
         opts.write_text(new_otext, encoding="utf-8")
-        print("наш пак последний в options.txt")
+        print("наш пак последний в options.txt, MPLOCmods убран")
 
 
 if __name__ == "__main__":
