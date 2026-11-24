@@ -14,13 +14,18 @@
   "guide.animus.entry.antilife": "Антижизнь",
   "item.animus.antilife_bucket": "Ведро антижизни",
   "jei.animus.antilife_block.info": "Создаётся Символом Потребления или когда жидкость антижизни касается твёрдых блоков. Распространяется так же, как вода, и уничтожает всё на своём пути.",
-  "text.component.animus.ticket.antilife": "Антижизнь"
+  "text.component.animus.ticket.antilife": "Антижизнь",
+  "jei.animus.imperfect_ritual_stone.reduction": "§6Ритуал редукции§r: Поставьте сверху блок кварца. Стоимость: 1000 LP. Убирает метку усиления с предмета в основной руке, возвращая уровни зачарований к норме."
  },
  "armageddon_mod": {
-  "item.armageddon_mod.fork_of_lamentations.description_7": " §7Может вскоре взорваться на цели §9(25% шанс)"
+  "item.armageddon_mod.fork_of_lamentations.description_7": " §7Может вскоре взорваться на цели §9(25% шанс)",
+  "block.armageddon_mod.mossy_helionite_bricks_slab": "§6Мшистая плита из гелионитового кирпича",
+  "item.armageddon_mod.the_sword_of_the_starved.description_7": " §7Когда у существа есть §9голод, §7наносит §920% §7дополнительного урона",
+  "item.armageddon_mod.apprentice_builder_armor_boots.description_3": "§9Скорость II"
  },
  "ars_nouveau": {
-  "ars_nouveau.page1.spell_mana": "Мана для заклинаний используется для каста заклинаний с помощью $(thing)Книги заклинаний$(). Максимальное количество маны и скорость, с которой она восстанавливается, можно увеличить, надев специальные $(item)Магические Доспехи$() или применив зачарования $(item)Усиления Маны$() или $(item)Восстановления Маны$() на вашем снаряжении. Кроме того, вы будете получать дополнительную ману и восстановление за каждый разблокированный глиф в вашей книге заклинаний."
+  "ars_nouveau.page1.spell_mana": "Мана для заклинаний используется для каста заклинаний с помощью $(thing)Книги заклинаний$(). Максимальное количество маны и скорость, с которой она восстанавливается, можно увеличить, надев специальные $(item)Магические Доспехи$() или применив зачарования $(item)Усиления Маны$() или $(item)Восстановления Маны$() на вашем снаряжении. Кроме того, вы будете получать дополнительную ману и восстановление за каждый разблокированный глиф в вашей книге заклинаний.",
+  "ars_nouveau.page3.spell_casting": "Если вы хотите привязать заклинание к другой вкладке, выберите вкладку справа и повторите описанный выше процесс. Для работы с книгой заклинаний предусмотрено несколько сочетаний клавиш. $(br)Открыть книгу заклинаний: $(k:ars_nouveau.open_book) $(br)Быстрый выбор: $(k:ars_nouveau.selection_hud) $(br)Следующее заклинание: $(k:ars_nouveau.next_slot) $(br)Предыдущее заклинание: $(k:ars_nouveau.previous_slot)"
  },
  "asyncparticles": {
   "config.asyncparticles.particle.particleLimit.tooltip": "Установите максимальное количество частиц на\nтип отрисовки частиц."
@@ -93,7 +98,8 @@
   "spell.brutality.singularity_shift.description.1": "§8Бросьте звезду, которая при ударе создаёт поле усиленной гравитации. Направление гравитации можно сменить, присев"
  },
  "cataclysm": {
-  "entity.cataclysm.ancient_ancient_remnant": "Древний Ревенант"
+  "entity.cataclysm.ancient_ancient_remnant": "Древний Ревенант",
+  "key.cataclysm.chestplate_ability": "Способности нагрудника Cataclysm"
  },
  "createaddition": {
   "block.createaddition.accumulator.tooltip.behaviour1": "Отдает _FE_ _проводам_, подключенным к _коннектору_, отмеченному стрелкой вверх.",
@@ -123,7 +129,8 @@
   "tooltip.enigmaticlegacy.abyssalHeart2_obf": "§5§kэто царство не содрогалось под пристальным взглядом",
   "tooltip.enigmaticlegacy.cursedRing11": "§dСемеро благословений будут ниспосланы на того, кто выстоит:",
   "tooltip.enigmaticlegacy.magnetRing2_alt": "§5Работает только при удержании §6Shift§5.",
-  "tooltip.enigmaticlegacy.superMagnetRing3_alt": "§5Работает только при удержании §6Shift§5."
+  "tooltip.enigmaticlegacy.superMagnetRing3_alt": "§5Работает только при удержании §6Shift§5.",
+  "book.enigmaticlegacy.entry.sharpshooter_enchantment.page.1": "Одно из возможных чар для арбалета, одно из самых полезных.<br2/>Оно увеличивает урон, наносимый стрелами из арбалета, что в чем-то похоже на Силу луков. Точнее, за каждый уровень Меткийа стрелок базовый урон арбалета будет увеличиваться на <&l>+40%%$(clear)."
  },
  "entity_model_features": {
   "entity_model_features.config.physics.tooltip": "При смерти отрисует только части оригинальной ванильной модели, если включён physics mod\n работает частично и не является идеальным решением",
@@ -141,8 +148,8 @@
   "config.entity_texture_features.allow_illegal_texture_paths.tooltip": "Убрать встроенный в игру запрет на использование\nв путях текстур символов, отличных от [§7a-z0-9/._-§r].\nНапример, станет возможным использование путей с\nпробелами или заглавными буквами.\n\nОтключено по умолчанию - авторам наборов ресурсов\nстоит избегать их использования и заранее убирать\nподобные символы во избежание проблем с загрузкой.",
   "config.entity_texture_features.always_check_vanilla_emissive_suffix.tooltip": "Отключить проверку нестандартных суффиксов.\nПодавляющее большинство наборов ресурсов\nиспользует суффикс \"§8_e§r\" несмотря на то, что\nвозможны и другие, поэтому не всегда есть\nсмысл их проверять.",
   "config.entity_texture_features.animation_compatibility.tooltip": "ETF не будет вмешиваться в анимированные\nтекстуры сущностей.\n\n§6ℹ §7Пригодится при игре с MoreMcmeta.\n\n§c⚠ §8Это может привести к мерцанию текстур\n §8с некоторыми шейдерами.",
-  "config.entity_texture_features.blink_frequency.tooltip": "Общий разброс частоты мерцания текстур сущностей.\nПри значении §7§o200§r текстура будет меняться по схеме:\n§71 секнуда §7+ §7случайная задержка от §71 до §7§o200 §7тактов§r\n(200 тактов = 10 секунд).\n\n§6ℹ§7 Задержку §7можно §7настроить §7для §7каждой §7сущности\n§r §7отдельно, §7подробнее §7см. в руководстве на GitHub.",
-  "config.entity_texture_features.blink_length.tooltip": "Длительность отображения текстуры мерцания в\nдополнение к базовой (§71 такт§r). При значении §7§o19§r\n(§71 §7такт §7+ §7§o19§r) длительность составит §720 §7тактов§r\n(20 тактов = 1 секунда).\n\n§6ℹ§7 Длительность можно настроить для каждой\n§r §7сущности, §7подробнее §7см. §7в руководстве.",
+  "config.entity_texture_features.blink_frequency.tooltip": "Задаёт частоту случайного мерцания текстур. \n При значении 100 мобы мерцают случайным образом после \n задержки в 1 секунду, а затем через случайный промежуток от \n 1 до 100 тактов (0-5 секунд). \n Это можно задать / переопределить для каждого моба \n через ресурспак. \n Подробности — на странице загрузки мода.",
+  "config.entity_texture_features.blink_length.tooltip": "Задаёт длительность мерцания текстур. \n 0 = 1 такт, 19 = 20 тактов / 1 секунда \n Это можно задать / переопределить для каждого моба \n через ресурспак. \n Подробности — на странице загрузки мода.",
   "config.entity_texture_features.blinking_mob_settings.tooltip": "Включить мерцающие текстуры сущностей.\nТекстуры должны иметь копии для замены\n(например, с закрытыми глазами) в формате\n\"§8имя_текстуры_blink.png§r\".\n\n§6ℹ§7 Поддерживаются промежуточные текстуры\n§r §7в формате \"§8имя_текстуры_blink2.png§7\".",
   "config.entity_texture_features.custom_block_entity.tooltip": "Включить поддержку пользовательских текстур\nдля блоков-сущностей с использованием формата\nOptifine и случайных текстур формата ETF.\n\n§c⚠§8 Несовместимо с Enhanced Block Entities.",
   "config.entity_texture_features.disable_default_directory.tooltip": "По умолчанию случайные текстуры могут\nзагружаться из стандартных папок.\nЭто можно отключить и заставить игру\nиспользовать только папки Optifine и ETF.\n\n§6ℹ§7 Предназначено для совместимости с\n§r §7модами, §7которые §7зачем-то §7содержат\n§r §7текстуры по типу \"§8mob2.png§7\".",
@@ -157,7 +164,7 @@
   "config.entity_texture_features.pbr_compatibility.tooltip": "Если установлены шейдеры, ETF не будет\nвмешиваться в текстуры с поддержкой PBR.\n\n§c⚠§8 §8Это может привести к мерцанию текстур\n §8с некоторыми шейдерами.",
   "config.entity_texture_features.player_skin_editor.coat_style.tooltip": "Функция продления текстуры куртки (второго\nслоя тела игрока) вплоть до 8 пикселей вниз.\nЕё можно использовать для имитации накидок,\nплатьев, балахонов и других видов одежды.\nПринцип работы весьма примитивен - просто\nпереносить в слой куртки для её удлинения\nверхнюю часть второго слоя ноги.\n\n§rВся - используется вся нога, в т.ч. её верх\n§r\"+\" - текстура копируется, а не переносится",
   "config.entity_texture_features.skin_feature_print.tooltip": "Сгенерировать копию текстуры вашего скина,\nобъединённую с шаблоном поддерживаемых\nмодом функций, чтобы упростить освоение и\nнастройку возможностей персонализации.\n\nЧтобы сохранить файл шаблона, откройте мир\nи переключите перспективу на вид от\nтретьего лица. После завершения экспорта\nв чате появится уведомление.\n\n§6ℹ§7 Шаблон сохраняется в «§o.minecraft/config§7».",
-  "config.entity_texture_features.skin_features_enable_full_transparency.tooltip": "Включить поддержку полностью прозрачных скинов.\nЭто отменяет ограничение в 60%, и скины других\nигроков могут стать полностью невидимыми для вас.\n\n§c⚠§8 Применение настройки требует перезапуска игры.",
+  "config.entity_texture_features.skin_features_enable_full_transparency.tooltip": "Позволяет сделать скины игроков полностью прозрачными (100%). \n ВНИМАНИЕ: это перекрывает проверку прозрачности в 60% \n для скинов игроков, так что они могут стать полностью невидимыми. \n Эта опция меняет только то, что видите вы, \n и не делает вас невидимыми для других — это ради веселья. \n //ТРЕБУЕТСЯ ПЕРЕЗАПУСК\\\\",
   "config.entity_texture_features.skin_features_enable_transparency.tooltip": "Включить поддержку частично прозрачных скинов.\nМаксимальная прозрачность ограничена до 60%,\nчтобы избежать злоупотребления этой функцией.\n\n§6ℹ§7 Прозрачность определяется самим файлом скина.",
   "config.entity_texture_features.skin_features_try_transparency_for_all.tooltip": "Попытаться включить прозрачность скинов у всех\nигроков, а не только у скинов формата ETF.\n\n§c⚠ §8Это отключает проверку полной прозрачности.",
   "config.entity_texture_features.special_emissive_settings.tooltip": "Эта категория существует отдельно, поскольку\nне все догадываются о принадлежности данных\nобъектов к сущностям.",
@@ -175,7 +182,8 @@
   "advancements.goety.craft_ring_of_want.description": "Кольцо желания увеличивает количество предметов, выпадающих с существ, убитых заклинаниями или прислужниками; сначала его нужно зачаровать",
   "block.goety.plushie_11": "Плюшевый §aKrakenKru",
   "block.goety.sculptured_statue_5": "Статуэтка §aKrakenKru",
-  "info.goety.focus.Pos2": "§eМестоположение:§e"
+  "info.goety.focus.Pos2": "§eМестоположение:§e",
+  "info.goety.ice_axe": "Ломает ледяные блоки и роняет их."
  },
  "goety_revelation": {
   "item.goety_revelation.apocalyptium_set.desc1": "§5Игнорирует §dурон от огня§5, §dмагический урон§5 и §dурон от взрыва§5.",
@@ -197,11 +205,48 @@
   "tooltip.hexerei.crow_flute_shift_1": "Способ управления воронами."
  },
  "industrialforegoing": {
-  "text.industrialforegoing.book.animal_growth_increaser": "Когда поддерживается энергией оно {кормит} едой, будет кормить детей животных чтобы заставить их {расти} быстрее.",
-  "text.industrialforegoing.book.animal_resource_harvester": "Когда машина обеспечена энергией, она пытается взаимодействовать с животными с помощью {вёдер} и {ножниц}, чтобы собрать ресурсы.",
-  "text.industrialforegoing.book.biofuel_generator": "Создаёт энергию когда запитан биотопливом. {Ведро} биотоплива может произвести 160RF/t, в общем {640,000}RF. Около {28} генераторов могут быть запущены из 1 {Bioreactor}.",
-  "text.industrialforegoing.book.crop_recolector": "Когда поддерживается энергией будет {собирать} полностью выросшие растения и рубить деревья, включая тыквы, арбузы и адский нарост. Каждая операция будет оставлять после себя немного {sludge} которая может использоваться в {Sludge Refiner} для получения разных материалов. (Заполненность никак не повлияет на работу)",
-  "text.industrialforegoing.book.energy_field_provider": "{Energy Field Addon} этот предмет устанавливается как улучшение в любую рабочую машину. Оно даёт {power} во внутренний энергетический буфер .@L@@L@{Energy Field Provider} может заряжать внутренний буфер с улучшениями {linked} на их {range}."
+  "text.industrialforegoing.book.animal_growth_increaser": "При подаче энергии и корма {breeding} будет кормить детёнышей животных, чтобы они {grow} быстрее.",
+  "text.industrialforegoing.book.animal_resource_harvester": "При подаче энергии взаимодействует с животными с помощью {buckets} и {shears}, чтобы доить коров и стричь овец.@L@@L@Также добывает {ink sacks} из кальмаров.",
+  "text.industrialforegoing.book.biofuel_generator": "Вырабатывает энергию при подаче биотоплива. {bucket} биотоплива выдаёт 160RF/t, всего {640,000}RF. От одного {Bioreactor} можно запустить около {28} генераторов.",
+  "text.industrialforegoing.book.crop_recolector": "При подаче энергии {harvest} полностью выросшие посевы и срубает деревья, включая тыквы, арбузы и адский нарост. Каждая операция даёт немного {sludge} — его можно переработать в {Sludge Refiner} и получить материалы. (Заполненный бак {not} замедляет машину)",
+  "text.industrialforegoing.book.energy_field_provider": "{Energy Field Addon} этот предмет устанавливается как улучшение в любую рабочую машину. Оно даёт {power} во внутренний энергетический буфер .@L@@L@{Energy Field Provider} может заряжать внутренний буфер с улучшениями {linked} на их {range}.",
+  "text.industrialforegoing.book.animal_independence_selector": "При подаче энергии перемещает животных {baby} с задней стороны на переднюю.@L@@L@Если установлен {Adult Filter}, он перемещает взрослых животных вместо детёнышей.",
+  "text.industrialforegoing.book.bioreactor": "При подаче {power} и {bio materials} производит {biofuel}.@L@@L@Каждый предмет повышает эффективность всех предметов на {10}mb; при максимальной эффективности реактор выдаёт {1440}mb, потребляя {9} разных предметов.",
+  "text.industrialforegoing.book.black_hole_controller": "Вмещает 9 {Black Hole Units} и даёт доступ к их содержимому. Это значит 9 × {2,147,483,647} предметов.",
+  "text.industrialforegoing.book.block_destroyer": "При подаче энергии {break} любой блок перед собой и перемещает его в свой инвентарь.",
+  "text.industrialforegoing.book.block_placer": "При подаче энергии {place} перед собой блоки из своего инвентаря.",
+  "text.industrialforegoing.book.conveyor_upgrade_dropping": "Улучшение сбрасывания ставится в центральную часть конвейера: оно {drop} существ прямо под собой или отправляет предметы в инвентари под ним.@L@@L@У него есть {filter} с белым или чёрным списком; мобов можно фильтровать с помощью {Mob Imprisonment Tool} с помещённой внутрь сущностью.",
+  "text.industrialforegoing.book.crop_enrich_material_injector": "При подаче энергии и удобрения удобряет посевы и саженцы костной мукой.@L@@L@Поддерживаемые удобрения: {bonemeal}, {Industrial Foregoing's} и {Forestry} удобрения.",
+  "text.industrialforegoing.book.crop_sower": "Сажает семена и саженцы — собирает их {Plant Gatherer}. Слоты можно {lock}, нажав на замок, тогда он будет {filter} входные предметы.@L@@L@{colored} фон обозначает цветные детали в {top} блока.",
+  "text.industrialforegoing.book.fluid_crafter": "{fluid crafter} крафтит всё, что требует {one} типа жидкости, вместо использования {buckets} из рецепта. Чтобы это работало, положите предметы в сетку и {lock it}. После этого подавайте предметы в сетку, а жидкость — в бак.@L@@L@Если в рецепте нужно много одного предмета, используйте {Item Splitter}.",
+  "text.industrialforegoing.book.fluid_pump": "Установленная над жидкостью Fluid Pump берёт эту жидкость как {filter} и начинает высасывать все жидкости того же типа в рабочей области — она ищет все жидкости {below} жидкостей рабочей области и высасывает их тоже. @L@@L@Вся выкачанная жидкость заменяется на {cobblestone}.",
+  "text.industrialforegoing.book.fortune_addon": "Добавляет {fortune/looting} машинам, поддерживающим это дополнение. Его нужно зачаровать на {Fortune}, и уровень чар будет применяться к действиям машины.",
+  "text.industrialforegoing.book.froster": "Froster позволяет создавать холодные вещества: он раскручивает поданную {water} на очень большой скорости и снижает температуру за счёт {power}.",
+  "text.industrialforegoing.book.infinity_drill": "Мощный бур, потерявший всю свою энергию. Зарядив его, можно разрушать миры быстрее. Чем больше энергии, тем больше область выемки. Чтобы сохранить эту энергию, он может эффективнее расходовать {Biofuel}. Shift+ПКМ по нему меняет область выемки. @L@@L@{Он хранит секреты, которые легко доступны патронам и некоторым редким мобам в мире.}",
+  "text.industrialforegoing.book.item_splitter": "{split} заданный размер стака по каждому слоту с разрешённой стороны {output}.",
+  "text.industrialforegoing.book.meat_feeder": "Если Meat Feeder лежит в вашем {inventory} и в нём есть {Liquid Meat}, он автоматически {feed} вас.@L@@L@Работает как обычный контейнер для жидкости.",
+  "text.industrialforegoing.book.mob_duplicator": "При подаче энергии, {Essence} и любой сущности в {Mob Imprisonment Tool} он создаёт их вокруг себя.@L@@L@Он {count} сущностей рядом и прекращает создавать их, если их слишком много.",
+  "text.industrialforegoing.book.mob_imprisonment_tool": "Если нажать по сущности с этим предметом в руке, он {hold} сущность внутри себя.",
+  "text.industrialforegoing.book.mob_relocator": "При подаче энергии {kill} любую сущность перед собой, как это сделал бы игрок.@L@@L@Он {collect} выпавшие предметы и превращает сферы опыта в {Essence}\". При наличии {Adult Filter Addon} убивает только взрослых мобов.",
+  "text.industrialforegoing.book.oredictionary_converter": "Превращает предметы с одинаковой записью {oredicted} в отфильтрованный предмет.",
+  "text.industrialforegoing.book.ore_fermenter": "При подаче {raw ore meat} он перерабатывается в {fermented ore meat} и увеличивается в размере. Снизу нужен {hot source}(горячие жидкости, огонь, магма-блоки), с любой другой стороны — {cold fluid}(холодные жидкости, лёд, ...).",
+  "text.industrialforegoing.book.ore_processor": "Разбирает руды с {Silk Touched} на их дроп.@L@@L@Если подать {Essence}, будет разбирать их с удачей.",
+  "text.industrialforegoing.book.ore_sieve": "При подаче {fermented ore meat} и небольшого количества {sand} отделяет руду от мяса и превращает её в {dust}.",
+  "text.industrialforegoing.book.ore_washer": "При подаче {liquid meat} и {ore} отмывает кусочки руды мясом в {raw ore meat} для дальнейшей переработки.",
+  "text.industrialforegoing.book.pink_slime": "Можно получить, убив {Pink Slime}, который появляется при размещении {Pink Slime Fluid} в мире.",
+  "text.industrialforegoing.book.pitiful_fuel_generator": "Работает так же, как Petrified Fuel Generator, но принимает только {wood}.",
+  "text.industrialforegoing.book.plant_interactor": "При подаче энергии {right click} по посевам и фруктам, собирая их в свой инвентарь или выбрасывая на землю, если они не помещаются. @L@@L@{*По умолчанию работает с Pam's Fruits and Plants.}",
+  "text.industrialforegoing.book.potion_enervator": "При подаче энергии работает как улучшенная версия {brewing stand}.@L@@L@Сначала нужно {fill} стеклянные бутылки водой, затем {brewing} все ингредиенты в верхнем ряду в {order}, слева направо.@L@@L@Смотрите на {arrow}, чтобы видеть текущую операцию.",
+  "text.industrialforegoing.book.protein_generator": "Вырабатывает энергию при подаче протеина. {bucket} протеина выдаёт 320RF/t, всего {1,280,000}RF.",
+  "text.industrialforegoing.book.protein_reactor": "При подаче {power} и {some animals drops} производит {protein}.@L@@L@Каждый предмет повышает эффективность всех предметов на {10}mb; при максимальной эффективности реактор выдаёт {1440}mb, потребляя {9} разных предметов.",
+  "text.industrialforegoing.book.range_addon": "Увеличивает рабочий {range} некоторых машин. Не все машины принимают это дополнение.",
+  "text.industrialforegoing.book.sewer": "При подаче энергии собирает {Sewage} из животных сверху.",
+  "text.industrialforegoing.book.sludge_refiner": "При подаче энергии и {1} ведра грязи (получено в сборщике растений) производит {earth like} материалы.@L@@L@{Если установлен JEI, посмотрите применения Sludge Refiner, чтобы узнать шанс выхода материалов}.",
+  "text.industrialforegoing.book.straw": "Позволяет {drink} из жидкостей мира или баков. В зависимости от жидкости может давать разные {effects}.@L@@L@@L@@L@@L@(Я не отвечаю за вредные эффекты, которые может вызвать трубочка)",
+  "text.industrialforegoing.book.tree_fluid_extractor": "Установленный перед любым {log} он производит {Liquid Latex}.@L@@L@Он медленно {consume} бревно, и каждый извлекатель жидкости из дерева ускоряет этот процесс.",
+  "text.industrialforegoing.book.upgrades": "В Industrial Foregoing нет улучшений скорости, но можно использовать {Energy Upgrades} и {Speed Upgrades} из Tesla Core Lib, чтобы ускорить машины. Для установки следующего нужен предыдущий тир.",
+  "text.industrialforegoing.book.villager_trade_exchanger": "При подаче энергии и {Mob Imprisonent Tool} с {Villager} внутри даёт доступ к автоматической торговле с этим жителем.",
+  "text.industrialforegoing.book.water_resources_collector": "Установленный над бассейном воды {3x3} он автоматически {fish}."
  },
  "irons_spellbooks": {
   "death.attack.irons_spellbooks.summon_vex.item": "%1$s был выпотрошен врединами, призванными %2$s с помощью %3$s"
@@ -251,7 +296,7 @@
   "modernfix.option.mixin.perf.boost_worker_count": "Только 1.16. Удаляет жёсткое ограничение на количество рабочих потоков, как сделали Mojang'и 1.18."
  },
  "modularrouters": {
-  "modularrouters.itemText.usage.item.fluid_module": "Переносит жидкости в/из маршрутизатора в/из соседнего блока в направлении, указанном в модуле.${br}• Модуль должен быть установлен в маршрутизатор и получать энергию."
+  "modularrouters.itemText.usage.item.fluid_module": "Переносит жидкости в маршрутизатор и из него, а также в соседний блок и из него, в направлении, указанном модулем.${br}• В буфере маршрутизатора должен находиться контейнер для жидкости.${br}• Может переносить жидкости в баки и из них, а также в мир и из мира."
  },
  "mutantmonsters": {
   "item.mutantmonsters.mutant_skeleton_boots": "Ботинки скелета мутанта",
@@ -259,7 +304,8 @@
   "item.mutantmonsters.mutant_skeleton_leggings": "Поножи скелета мутанта",
   "item.mutantmonsters.mutant_skeleton_shoulder_pad": "Наплечник скелета мутанта",
   "item.mutantmonsters.mutant_skeleton_skull": "Череп скелета мутанта",
-  "item.mutantmonsters.mutant_snow_golem_spawn_egg": "Яйцо призыва снежного голема-мутанта"
+  "item.mutantmonsters.mutant_snow_golem_spawn_egg": "Яйцо призыва снежного голема-мутанта",
+  "item.mutantmonsters.creeper_shard": "Осколок крипера"
  },
  "naturesaura": {
   "block.naturesaura.ancient_sapling": "Древний саженец"
@@ -326,7 +372,10 @@
   "gui.secret_note.true_blue.6": " Или ты проглотил это,",
   "gui.secret_note.true_blue.7": " или выплюнул наружу.",
   "gui.secret_note.true_blue.9": " Десять лет или десять мгновений",
-  "tooltip.starcatcher.naturalist_rod.2": "палка и бечёвка."
+  "tooltip.starcatcher.naturalist_rod.2": "палка и бечёвка.",
+  "gui.guide.page.4.right.7": "Крючки, поплавки и приманки.",
+  "gui.guide.page.0.right.17": "драгоценная <sclegendary>легендарная</sclegendary> рыба",
+  "gui.guide.page.8.right.8": "в <sclegendary>легендарном</sclegendary> письме, поместите его внутрь"
  },
  "subtle_effects": {
   "config.subtle_effects.entities.damageTaken.damagedSlimeSlime": "Повреждённая слизь"
@@ -335,10 +384,152 @@
   "item.terramity.lucky_dice.desc3": "§e -Даёт способность §cистинного крита §eдля любого урона",
   "item.terramity.lucky_dice.desc4": "§e -§cИстинные криты §eдают ×1,66 урона с базовым шансом 20%, +10% за каждый уровень §aУдачи",
   "item.terramity.terramity_guidebook_icon.desc3": "§7/give @p patchouli:guide_book{\"patchouli:book\":\"terramity_guidebook\"}",
-  "item.terramity.terramity_guidebook_icon.description_2": "§7/give @p patchouli:guide_book{\"patchouli:book\":\"terramity_guidebook\"}"
+  "item.terramity.terramity_guidebook_icon.description_2": "§7/give @p patchouli:guide_book{\"patchouli:book\":\"terramity_guidebook\"}",
+  "item.terramity.sapphire_armor_chestplate": "Сапфировый нагрудник",
+  "block.terramity.void_tile_slab": "Ступени из пустотной плитки",
+  "advancements.angel_feather_advancement.descr": "Убейте ангела и соберите его перья."
  },
  "tiered": {
-  "tiered:epic_gun_8.label": "Модель Warhost"
+  "tiered:epic_gun_8.label": "Модель Warhost",
+  "tiered:common_armor_1.label": "Стойкий",
+  "tiered:common_armor_2.label": "Подогнанный",
+  "tiered:common_armor_3.label": "Быстрый шаг",
+  "tiered:common_armor_4.label": "Охлаждённый",
+  "tiered:common_tool_1.label": "Быстрый",
+  "tiered:common_tool_2.label": "Закалённый",
+  "tiered:common_tool_3.label": "Удлинённый",
+  "tiered:common_tool_4.label": "Внимательный",
+  "tiered:common_melee_1.label": "Жестокий",
+  "tiered:common_melee_2.label": "Безжалостный",
+  "tiered:common_melee_3.label": "Разрушающий",
+  "tiered:common_melee_4.label": "Пронзающий",
+  "tiered:common_ranged_1.label": "Пернатый",
+  "tiered:common_ranged_2.label": "Лёгкий выстрел",
+  "tiered:common_ranged_3.label": "Разрушающий",
+  "tiered:common_ranged_4.label": "Пронзающий",
+  "tiered:common_shield_1.label": "Стойкий",
+  "tiered:common_shield_2.label": "Подогнанный",
+  "tiered:common_shield_3.label": "Быстрый шаг",
+  "tiered:common_shield_4.label": "Ловкий",
+  "tiered:uncommon_armor_1.label": "Охраняемый",
+  "tiered:uncommon_armor_2.label": "Крепкий",
+  "tiered:uncommon_armor_3.label": "Катящийся Ветер",
+  "tiered:uncommon_armor_4.label": "Скованный Льдом",
+  "tiered:uncommon_tool_1.label": "Кованая Спешка",
+  "tiered:uncommon_tool_2.label": "Кованый Сплав",
+  "tiered:uncommon_tool_3.label": "Дальний Удар",
+  "tiered:uncommon_tool_4.label": "Учёный",
+  "tiered:uncommon_melee_1.label": "Хищный",
+  "tiered:uncommon_melee_2.label": "Боевой Клык",
+  "tiered:uncommon_melee_3.label": "Рассекатель",
+  "tiered:uncommon_melee_4.label": "Жизненный Удар",
+  "tiered:uncommon_ranged_1.label": "Зазубренный",
+  "tiered:uncommon_ranged_2.label": "Связанный Ветром",
+  "tiered:uncommon_ranged_3.label": "Рассекатель",
+  "tiered:uncommon_ranged_4.label": "Жизненный Удар",
+  "tiered:uncommon_shield_1.label": "Охраняемый",
+  "tiered:uncommon_shield_2.label": "Крепкий",
+  "tiered:uncommon_shield_3.label": "Катящийся Ветер",
+  "tiered:uncommon_shield_4.label": "Перьевой Шаг",
+  "tiered:rare_armor_1.label": "Рождённый Бастионом",
+  "tiered:rare_armor_2.label": "Кованый Кровью",
+  "tiered:rare_armor_3.label": "Скользящий Шаг",
+  "tiered:rare_armor_4.label": "Рождённый Инеем",
+  "tiered:rare_tool_1.label": "Раскалывающий Жилы",
+  "tiered:rare_tool_2.label": "Несокрушимая Рука",
+  "tiered:rare_tool_3.label": "Дотягивающийся До Горизонта",
+  "tiered:rare_tool_4.label": "Просветлённый",
+  "tiered:rare_melee_1.label": "Кованый Яростью",
+  "tiered:rare_melee_2.label": "Рассекающий Тень",
+  "tiered:rare_melee_3.label": "Наковальнолом",
+  "tiered:rare_melee_4.label": "Пронзающий Сердце",
+  "tiered:rare_ranged_1.label": "Убийца Ястребов",
+  "tiered:rare_ranged_2.label": "Пронзающий Облака",
+  "tiered:rare_ranged_3.label": "Наковальнолом",
+  "tiered:rare_ranged_4.label": "Пронзающий Сердце",
+  "tiered:rare_shield_1.label": "Рождённый Бастионом",
+  "tiered:rare_shield_2.label": "Кованый Кровью",
+  "tiered:rare_shield_3.label": "Скользящий Шаг",
+  "tiered:rare_shield_4.label": "Шаг Бури",
+  "tiered:epic_armor_1.label": "Тектонический",
+  "tiered:epic_armor_2.label": "Сердце Титана",
+  "tiered:epic_armor_3.label": "Разломный шаг",
+  "tiered:epic_armor_4.label": "Бездна Зимы",
+  "tiered:epic_tool_1.label": "Сейсмический Мастер",
+  "tiered:epic_tool_2.label": "Благословение Кузнеца",
+  "tiered:epic_tool_3.label": "Рука Титана",
+  "tiered:epic_tool_4.label": "Мудрость Старейшины",
+  "tiered:epic_melee_1.label": "Грмовой Рассекатель",
+  "tiered:epic_melee_2.label": "Жуткий Рассекатель",
+  "tiered:epic_melee_3.label": "Дробилка Цитадели",
+  "tiered:epic_melee_4.label": "Резчик Судьбы",
+  "tiered:epic_ranged_1.label": "Перо Грозового Укуса",
+  "tiered:epic_ranged_2.label": "Стрела Бури",
+  "tiered:epic_ranged_3.label": "Дробилка Цитадели",
+  "tiered:epic_ranged_4.label": "Резчик Судьбы",
+  "tiered:epic_shield_1.label": "Тектонический",
+  "tiered:epic_shield_2.label": "Сердце Титана",
+  "tiered:epic_shield_3.label": "Разломный шаг",
+  "tiered:epic_shield_4.label": "Ходок Горизонта",
+  "tiered:legendary_armor_1.label": "Стена Вечности",
+  "tiered:legendary_armor_2.label": "Древний Пульс",
+  "tiered:legendary_armor_3.label": "Бегун Затмения",
+  "tiered:legendary_armor_4.label": "Аватар Глубин",
+  "tiered:legendary_tool_1.label": "Древняя Раскопка",
+  "tiered:legendary_tool_2.label": "Непоколебимый Остов",
+  "tiered:legendary_tool_3.label": "Хватка Исполинов",
+  "tiered:legendary_tool_4.label": "Великий Мудрец",
+  "tiered:legendary_melee_1.label": "Гнев Арея",
+  "tiered:legendary_melee_2.label": "Падение Солнца",
+  "tiered:legendary_melee_3.label": "Вечная Осада",
+  "tiered:legendary_melee_4.label": "Последнее Отверстие",
+  "tiered:legendary_ranged_1.label": "Перо Небосколы",
+  "tiered:legendary_ranged_2.label": "Небесный След",
+  "tiered:legendary_ranged_3.label": "Вечная Осада",
+  "tiered:legendary_ranged_4.label": "Последнее Отверстие",
+  "tiered:legendary_shield_1.label": "Стена Вечности",
+  "tiered:legendary_shield_2.label": "Древний Пульс",
+  "tiered:legendary_shield_3.label": "Бегун Затмения",
+  "tiered:legendary_shield_4.label": "Первопроходец Гроз",
+  "tiered:mythic_armor_1.label": "Последний Бастион Мира",
+  "tiered:mythic_armor_2.label": "Кровь Сотворения",
+  "tiered:mythic_armor_3.label": "Тень Последнего Шага",
+  "tiered:mythic_armor_4.label": "Левиатан Инея",
+  "tiered:mythic_tool_1.label": "Расщепитель Земли",
+  "tiered:mythic_tool_2.label": "Реликвия Бесконечного Применения",
+  "tiered:mythic_tool_3.label": "Рука Космического Искателя",
+  "tiered:mythic_tool_4.label": "Провидец Всех Путей",
+  "tiered:mythic_melee_1.label": "Гнев Сотворения",
+  "tiered:mythic_melee_2.label": "Суд Вымирания",
+  "tiered:mythic_melee_3.label": "Падение Бастионов",
+  "tiered:mythic_melee_4.label": "Тишина Между Ударами Сердца",
+  "tiered:mythic_ranged_1.label": "Стрела Кромки Сотворения",
+  "tiered:mythic_ranged_2.label": "Полёт За Пределами Времени",
+  "tiered:mythic_ranged_3.label": "Падение Бастионов",
+  "tiered:mythic_ranged_4.label": "Тишина Между Ударами Сердца",
+  "tiered:mythic_shield_1.label": "Последний Бастион Мира",
+  "tiered:mythic_shield_2.label": "Кровь Сотворения",
+  "tiered:mythic_shield_3.label": "Тень Последнего Шага",
+  "tiered:uncommon_gun_9.label": "Утончённый",
+  "tiered:epic_gun_9.label": "Непорочный",
+  "tiered:legendary_gun_9.label": "Безупречный",
+  "tiered:uncommon_armor_16.label": "Утончённый",
+  "tiered:epic_tool_6.label": "Непорочный",
+  "tiered:legendary_tool_6.label": "Безупречный",
+  "tiered:uncommon_tool_5.label": "Утончённый",
+  "tiered:epic_melee_9.label": "Непорочный",
+  "tiered:legendary_melee_9.label": "Безупречный",
+  "tiered:uncommon_melee_9.label": "Утончённый",
+  "tiered:epic_ranged_9.label": "Непорочный",
+  "tiered:legendary_ranged_9.label": "Безупречный",
+  "tiered:uncommon_ranged_9.label": "Утончённый",
+  "tiered:epic_shield_6.label": "Непорочный",
+  "tiered:legendary_shield_6.label": "Безупречный",
+  "tiered:uncommon_shield_6.label": "Утончённый",
+  "tiered:epic_staffwand_3.label": "Непорочный",
+  "tiered:legendary_staffwand_3.label": "Безупречный",
+  "tiered:uncommon_staffwand_3.label": "Утончённый",
+  "tiered:mythic_shield_4.label": "Трансцендентная Скорость"
  },
  "confluence": {
   "info.confluence.dps_meter": "УВС: %s",
@@ -361,5 +552,42 @@
   "block.linggango_tweaks.warding_torch": "Жаровня",
   "block.linggango_tweaks.hushing_lamp": "Жаровня душ",
   "linggango_tweaks.gacha.skip_hint": "[Пробел] [Ввод] [ЛКМ] — пропустить"
+ },
+ "bloodmagic": {
+  "block.bloodmagic.dungeon_metal": "Адский блок",
+  "guide.patchouli.bloodmagic.ritual_info.awakened_activation_crystal_link": "$(l:bloodmagic:rituals/activation_crystals#awakened)%s$(/l)",
+  "guide.patchouli.bloodmagic.ritual_info.counter_formatter": "$(br)%s%s$()"
+ },
+ "mysticalagriculture": {
+  "item.mysticalagriculture.imperium_boots": "Империевые сапоги",
+  "item.mysticalagriculture.prudentium_boots": "Прудентиевые сапоги",
+  "block.mysticalagriculture.soulstone_cobble_stairs": "Булыжниковые ступени из камня душ"
+ },
+ "somemoreblocks": {
+  "block.somemoreblocks.mossy_end_stone_brick_stairs": "Ступени из замшелых эндерняковых кирпичей"
+ },
+ "alexscaves": {
+  "entity.alexscaves.magnetic_weapon": "Магнитное оружие"
+ },
+ "createlazytick": {
+  "createlazytick.error.filter_empty_hint": "Никакого фильтра не было. Пример формата: {name:mechanical_saw,value>50}. Если внутри фигурных скобок есть пробелы, заключите весь фильтр в дополнительную пару двойных кавычек."
+ },
+ "l2complements": {
+  "enchantment.l2complements.safeguard.desc": "Если прочность предмета превышает 1, при повреждении он сохранит как минимум 1 единицу прочности."
+ },
+ "too_many_bows": {
+  "item.too_many_bows.wind_bow.tooltip.ability": "Способность: §bПорыв бури§r \n  • При попадании выпускает порыв ветра \n  • Отбрасывает врагов рядом \n  • Прямые попадания наносят небольшой магический урон"
+ },
+ "bosses_of_mass_destruction": {
+  "text.autoconfig.bosses_of_mass_destruction.option.gauntletConfig.attack": "Урон атаки",
+  "text.autoconfig.bosses_of_mass_destruction.option.obsidilithConfig.attack": "Урон атаки",
+  "text.autoconfig.bosses_of_mass_destruction.option.voidBlossomConfig.attack": "Урон атаки"
+ },
+ "somakespells": {
+  "effect.somakespells.blood_cut": "Кровавый порез",
+  "spell.somakespells.blood_cut": "Кровавый порез"
+ },
+ "morerelics": {
+  "tooltip.relics.crown_of_the_legend.ability.never_die.stat.potency.value": "%1$s"
  }
 }
